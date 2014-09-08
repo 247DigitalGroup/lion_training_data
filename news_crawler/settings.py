@@ -1,22 +1,28 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for news_crawler project
+""" Scrapy settings for news_crawler project
 #
 # For simplicity, this file contains only the most important settings by
 # default. All the other settings are documented here:
 #
 #     http://doc.scrapy.org/en/latest/topics/settings.html
-#
+"""
 
 BOT_NAME = 'news_crawler'
 # LOG_LEVEL = 'INFO'
-DOWNLOAD_DELAY = 1
+# DOWNLOAD_DELAY = 1
+MAX_ITEMS = 5000
 SPIDER_MODULES = ['news_crawler.spiders']
 NEWSPIDER_MODULE = 'news_crawler.spiders'
 
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
     'news_crawler.middlewares.RandomUserAgentMiddleware': 400,
+    'news_crawler.middlewares.CustomDownloaderMiddleware': 500
+}
+
+ITEM_PIPELINES = {
+    'news_crawler.pipelines.NewsCrawlerPipeline': 200,
 }
 
 USER_AGENTS = [
@@ -58,3 +64,11 @@ USER_AGENTS = [
     (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24'
 ]
 
+DB_HOST = '127.0.0.1'
+DB_PORT = 27017
+DB_NAME = 'lion_training_data_2'
+
+from pymongo import MongoClient
+
+db = MongoClient(DB_HOST, DB_PORT)
+db = db[DB_NAME]

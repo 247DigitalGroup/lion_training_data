@@ -1,0 +1,12 @@
+scrapy
+scrapyd
+redis
+hiredis
+pymongo
+tornado
+tld
+mmh3
+numpy
+git+https://github.com/grangier/python-goose.git
+git+https://github.com/saffsd/langid.py.git
+python-levenshtein

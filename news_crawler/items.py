@@ -14,4 +14,10 @@ class ArticleItem(Item):
     """ article item """
 
     link = Field()
-    categories = Field()
+    category = Field()
+    title_hint = Field()
+    raw_title = Field()
+    title = Field()
+    body = Field()
+    image_url = Field()
+    error = Field()

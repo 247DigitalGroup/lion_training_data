@@ -1,4 +1,3 @@
-http://news.yahoo.com/
 http://edition.cnn.com/
 http://www.huffingtonpost.com/
 http://www.nytimes.com/

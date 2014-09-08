@@ -2,123 +2,214 @@
 
 """ implements news spider class """
 
+# pylint: disable=E1101,E1002,W0702
+
 from scrapy.spider import Spider
 from scrapy.http.request import Request
-from scrapy.selector import Selector
+from scrapy.http import HtmlResponse
 from scrapy import log
-from news_crawler.data.news_websites import NEWS_WEBSITES
+from news_crawler.data.categories import CATEGORIES as categories
 from news_crawler.items import ArticleItem
 from news_crawler.loaders import DefaultItemLoader
+from news_crawler.settings import MAX_ITEMS
+import news_crawler.spiders.utils as utils
+from scrapy.contrib.linkextractors import LinkExtractor
 import re
-from tld import get_tld
-from scrapy.utils.url import canonicalize_url
-import urlparse
+import Levenshtein
+from goose import Goose
 
 
 class NewsSpider(Spider):
     """ crawls articles from news websites associated with categories """
 
-    name = "news"
+    name = "data"
+    settings = {
+        # 'LOG_LEVEL': 'DEBUG',
+        'CLOSESPIDER_ITEMCOUNT': MAX_ITEMS,
+        'CONCURRENT_REQUESTS_PER_DOMAIN': 2,
+        'DOWNLOAD_TIMEOUT': 30,
+        'COOKIES_ENABLED': False,
+        'RETRY_ENABLED': False,
+        'REDIRECT_ENABLED': True,
+        'REDIRECT_MAX_TIMES': 1,
+        'AJAXCRAWL_ENABLED': True,
+    }
 
     def __init__(self, *args, **kwargs):
         super(NewsSpider, self).__init__(*args, **kwargs)
         self.link = kwargs.get('link', None)
+        self.category = kwargs.get('category', None)
+        self.allowed_domains = set()
+        self.max_items_per_domain = 0
 
     @classmethod
-    def get_site_from_link(cls, link):
+    def from_crawler(cls, crawler, **spider_kwargs):
+        """ overrides crawler's settings """
+
+        settings = crawler.settings
+        for key, value in cls.settings.iteritems():
+            settings.set(key, value)
+        return cls(**spider_kwargs)
+
+    @classmethod
+    def get_site_by_link(cls, link):
         """ retrieve site from a link """
 
-        for site in NEWS_WEBSITES:
-            if site['homepage'] == link:
-                return site
+        for cat in categories:
+            for site in cat['data']:
+                if site['link'] == link:
+                    return site
 
     @classmethod
-    def url_to_domain(cls, link):
-        """ converts link to domain """
+    def get_category_by_link(cls, link):
+        """ retrieve category from a link """
 
-        try:
-            return get_tld(link)
-        except Exception:  # pylint: disable=W0703
-            return None
+        for category in categories:
+            for site in category['data']:
+                if site['link'] == link:
+                    return category['category']
+
+    @classmethod
+    def get_sites_by_category(cls, category):
+        """ retrieve sites from a category """
+
+        for cat in categories:
+            if cat['category'] == category:
+                return cat['data']
 
     def start_requests(self):
         if self.link:
-            site = self.get_site_from_link(self.link)
-            yield Request(self.link, callback=self.parse_category, meta={'site': site})
+            site = self.get_site_by_link(self.link)
+            domain = utils.url_to_domain(self.link)
+            self.allowed_domains = [domain]
+            site['domain'] = domain
+            self.category = self.get_category_by_link(self.link)
+            yield Request(
+                self.link, callback=self.parse_article, meta={'site': site})
         else:
-            for site in NEWS_WEBSITES:
+            sites = self.get_sites_by_category(self.category)
+            for site in sites:
+                domain = utils.url_to_domain(site['link'])
+                self.allowed_domains.add(domain)
+                site['domain'] = domain
                 yield Request(
-                    site['homepage'], callback=self.parse_category, meta={'site': site})
+                    site['link'], callback=self.parse_article, meta={'site': site})
 
     def parse(self, response):
         pass
 
-    def parse_category(self, response):
-        """ extract category links """
+    @classmethod
+    def is_valid(cls, response):
+        """ if the response is valid """
+
+        if not isinstance(response, HtmlResponse):
+            log.msg('[%s X] - %s' % (
+                str(response.status), response.url), level=log.INFO)
+            return
+
+        site = response.request.meta['site']
+        new_domain = utils.url_to_domain(response.url)
+        if new_domain != site['domain']:
+            return
 
         log.msg('[%s] - %s' % (
             str(response.status), response.url), level=log.INFO)
 
-        site = response.request.meta['site']
-        selector = Selector(response)
-        links = selector.xpath(site['category_xpath']).extract()
-        for link in self.refine_links(links):
-            link = urlparse.urljoin(response.url, link)
-            yield Request(link, callback=self.parse_article, meta={'site': site})
+        return True
+
+    def _extract_links(self, response, restrict_xpaths=()):
+        """ parse links from response
+            @return hrefs
+        """
+        link_extractor = LinkExtractor(
+            allow_domains=tuple(self.allowed_domains),
+            restrict_xpaths=restrict_xpaths)
+        return link_extractor.extract_links(response)
+
+    @classmethod
+    def filter_links_by_regex(cls, links, regex):
+        """ filter links """
+        final_links = []
+        for link in links:
+            if re.search(regex, link.url):
+                final_links.append(link)
+        return final_links
+
+    @classmethod
+    def deny_links(cls, links, regex):
+        """ filter links """
+        final_links = []
+        for link in links:
+            if not re.search(regex, link.url):
+                final_links.append(link)
+        return final_links
+
 
     def parse_article(self, response):
-        """ extract article links """
+        """ parse article pages from response """
 
-        log.msg('[%s] - %s' % (
-            str(response.status), response.url), level=log.INFO)
-
-        site = response.request.meta['site']
-        categories = self.extract_categories(
-            site['regex'].get('category', None), response.url)
-        selector = Selector(response)
-        if not isinstance(site['article_xpath'], list):
-            site['article_xpath'] = [site['article_xpath']]
-        for xpath in site['article_xpath']:
-            links = selector.xpath(xpath).extract()
-            for link in self.refine_links(links):
-                link = urlparse.urljoin(response.url, link)
-                yield Request(link, callback=self.extract_article, meta={
-                    'site': site, 'categories': categories})
-
-    def extract_article(self, response):
-        """ extract categories and creates an article item """
-
-        log.msg('[%s] - %s' % (
-            str(response.status), response.url), level=log.INFO)
+        if not self.is_valid(response):
+            return
 
         site = response.request.meta['site']
-        categories = self.extract_categories(
-            site['regex'].get('article', None), response.url)
-        categories += response.request.meta['categories']
+        if site['select'][:1] == '//':
+            links = self._extract_links(response, site['select'])
+        else:
+            links = self._extract_links(response)
+        if 'deny' in site:
+            links = self.deny_links(links, site['deny'])
+        if site['select'] != 'all':
+            links = self.filter_links_by_regex(links, site['select'])
+        for link in links:
+            yield Request(link.url, callback=self.parse_article, meta={
+                'site': site})
+
+        links = self._extract_links(response, site.get('follow', ()))
+        if 'deny' in site:
+            links = self.deny_links(links, site['deny'])
+        for link in links:
+            yield Request(link.url, callback=self.parse_article, meta={
+                'site': site})
+
         loader = DefaultItemLoader(item=ArticleItem(), response=response)
         loader.add_value('link', response.url)
-        loader.add_value('categories', set(categories))
+        loader.add_value('category', self.category)
+        loader = self.parse_content(response.body, loader)
+
         yield loader.load_item()
 
     @classmethod
-    def refine_links(cls, links):
-        """ refines links to avoid duplicates """
+    def extract_title(cls, loader):
+        """ extract title """
 
-        refine_links = set([canonicalize_url(link) for link in links])
-        return refine_links
+        loader.add_xpath(
+            'raw_title', '//h1//text() | //h2//text() | //h3//text()')
 
     @classmethod
-    def extract_categories(cls, regex, link):
-        """ extracts categories from link """
+    def choose_best_title(cls, loader, title_hint, candidates):
+        """ choose the best title from candidates """
 
-        if not regex:
-            return []
+        for title in candidates:
+            ratio = Levenshtein.ratio(title_hint, title)
+            if ratio > 0.8:
+                # print title, '---', title_hint
+                loader.replace_value('title', title)
+                return
 
-        categories = []
-        match = re.search(regex, link)
-        if match:
-            categories.append(match.group(1))
-        print regex, link, categories
+    def parse_content(self, html, loader):
+        """ parse content(title, body) from html """
 
-        return categories
-
+        self.extract_title(loader)
+        goose_obj = Goose()
+        try:
+            article = goose_obj.extract(raw_html=html)
+        except:
+            return loader
+        self.choose_best_title(
+            loader, article.title, loader.get_collected_values('raw_title'))
+        loader.add_value('body', article.cleaned_text)
+        try:
+            loader.add_value('image_url', article.top_image.src)
+        except:
+            pass
+        return loader
