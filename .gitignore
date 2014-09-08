@@ -53,3 +53,10 @@ coverage.xml
 docs/_build/
 
 *.swp
+
+# Scrapy
+dbs/
+items/
+news_crawlers/data/training_data/
+venv/
+twistd.pid
