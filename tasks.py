@@ -11,6 +11,7 @@ except ImportError:
 from news_crawler.data.categories import CATEGORIES as categories
 from news_crawler.settings import db
 import os
+import time
 
 
 def master_run():
@@ -46,45 +47,41 @@ def news_spider(link):
     print result
 
 
-def make_file_accessible(filepath, mode='w'):
-    ''' Check if a file exists and is accessible. '''
+def normalize_body(body):
+    """ remove \n \r in body """
+    body = body.replace('\n', ' ').replace('\r', '')
+    return body.encode('utf8').strip() + '\n'
 
-    try:
-        f = open(filepath, mode)
-        f.close()
-    except IOError:
-        return False
-
-    return True
 
 def build_data():
     """ build data set """
 
+    ratio = 0.8
+    quantity = 10000
+    path = 'news_crawler/data/training_data/%s' % time.strftime('%d-%m-%Y %H%M%S')
+    os.makedirs(path, 0755)
+    f_train = open('%s/train' % path, 'w')
+    f_test = open('%s/test' % path, 'w')
     for cat in categories:
         if cat['data'] is not None:
             data = db.links.find(
-                {'category': cat['category'], 'body': {'$exists': True}}).limit(10000)
+                {'category': cat['category'], 'body': {'$exists': True}}).limit(quantity)
             data = list(data)
-            if len(data) < 8000:
+            if len(data) < int(ratio*quantity):
+                print 'DROPPED', cat['category'], len(data)
                 continue
             print cat['category'], len(data)
-            train = data[:int(0.8*len(data))]
-            test = data[int(0.8*len(data)):]
-            train_path = 'news_crawler/data/training_data/train/%s' % cat['category']
-            os.makedirs(train_path, 0755)
-            test_path = 'news_crawler/data/training_data/test/%s' % cat['category']
-            os.makedirs(test_path, 0755)
+            train = data[:int(ratio*len(data))]
+            test = data[int(ratio*len(data)):]
             for each in train:
-                f_train = open('%s/%s' % (train_path, str(each['_id'])), 'w')
-                f_train.write(each['body'].encode('utf8').strip())
-                f_train.close()
+                body = normalize_body(each['body'])
+                f_train.write(cat['category'].encode('utf8') + '\t'+ body)
             for each in test:
-                f_test = open('%s/%s' % (test_path, str(each['_id'])), 'w')
-                f_test.write(each['body'].encode('utf8').strip())
-                f_test.close()
-
+                body = normalize_body(each['body'])
+                f_test.write(cat['category'].encode('utf8') + '\t'+ body)
+    f_train.close()
+    f_test.close()
 
 if __name__ == '__main__':
-    # run_by_category('News, Media & Publications')
-    master_run()
-    # build_data()
+    # master_run()
+    build_data()

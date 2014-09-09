@@ -117,13 +117,13 @@ class NewsSpider(Spider):
 
         return True
 
-    def _extract_links(self, response, restrict_xpaths=()):
+    def _extract_links(self, response, params):
         """ parse links from response
             @return hrefs
         """
-        link_extractor = LinkExtractor(
-            allow_domains=tuple(self.allowed_domains),
-            restrict_xpaths=restrict_xpaths)
+
+        params['allow_domains'] = tuple(self.allowed_domains)
+        link_extractor = LinkExtractor(**params)
         return link_extractor.extract_links(response)
 
     @classmethod
@@ -144,7 +144,6 @@ class NewsSpider(Spider):
                 final_links.append(link)
         return final_links
 
-
     def parse_article(self, response):
         """ parse article pages from response """
 
@@ -152,21 +151,15 @@ class NewsSpider(Spider):
             return
 
         site = response.request.meta['site']
-        if site['select'][:1] == '//':
-            links = self._extract_links(response, site['select'])
-        else:
-            links = self._extract_links(response)
-        if 'deny' in site:
-            links = self.deny_links(links, site['deny'])
-        if site['select'] != 'all':
-            links = self.filter_links_by_regex(links, site['select'])
+
+        links = self._extract_links(response, {
+            'allow': site.get('regex', ()),
+            'restrict_xpaths': site.get('xpath', ())})
         for link in links:
             yield Request(link.url, callback=self.parse_article, meta={
                 'site': site})
-
-        links = self._extract_links(response, site.get('follow', ()))
-        if 'deny' in site:
-            links = self.deny_links(links, site['deny'])
+        links = self._extract_links(response, {
+            'restrict_xpaths': site.get('follow', ())})
         for link in links:
             yield Request(link.url, callback=self.parse_article, meta={
                 'site': site})
