@@ -41,11 +41,6 @@ class DuplicatesPipeline(object):
 class NewsCrawlerPipeline(object):
     """ implements methods for storing/updating article data """
 
-    def __init__(self, *args, **kwargs):
-        for row in db.links.find():
-            value = hashlib.md5(row['body'].encode('utf8')).hexdigest()
-            local_redis.sadd('training_data_seen', value)
-
     def process_item(self, item, spider):
         """ global processor """
 

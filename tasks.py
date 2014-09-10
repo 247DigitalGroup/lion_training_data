@@ -9,7 +9,7 @@ try:
 except ImportError:
     import json
 from news_crawler.data.categories import CATEGORIES as categories
-from news_crawler.settings import db
+from news_crawler.settings import db, local_redis
 import os
 import time
 import hashlib
@@ -108,6 +108,13 @@ def count_data():
         count = db.links.find({'category': cat['category']}).count()
         print cat['category'], count
     print "-------------------\n"
+
+def push_seen_data_to_redis():
+    """ push seen data to redis """
+
+    for row in db.links.find():
+        value = hashlib.md5(row['body'].encode('utf8')).hexdigest()
+        local_redis.sadd('training_data_seen', value)
 
 
 # def remove_duplicates():
