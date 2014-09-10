@@ -168,10 +168,6 @@ CATEGORIES = [
                 'link': 'http://www.travelpulse.com/news/',
                 'regex': r'news'
             },
-            {
-                'link': 'http://www.telegraph.co.uk/travel/travelnews/',
-                'regex': r'travel'
-            },
         ]
     },
     {
@@ -202,6 +198,13 @@ CATEGORIES = [
             },
             {
                 'link': 'http://www.autotrader.com/',
+            },
+            {
+                'link': 'http://autoweek.com/'
+            },
+            {
+                'link': 'http://www.greencarreports.com/news/electric-cars',
+                'regex': r'news'
             }
         ]
     },
@@ -216,13 +219,12 @@ CATEGORIES = [
                 'regex': r'/law/'
             },
             {
-                'link': 'http://www.bloomberg.com/news/law/',
-                'regex': r'/news/',
-                'follow': '//ul[@section_name="more_LAW"]//li//a'
+                'link': 'http://edition.cnn.com/JUSTICE/',
+                'regex': r'/justice/',
             },
             {
-                'link': 'http://www.law.com/',
-                'regex': r'/sites/articles/',
+                'link': 'http://news.msn.com/crime-justice/',
+                'regex': r'crime-justice'
             }
         ]
     },
@@ -231,6 +233,8 @@ CATEGORIES = [
         'data': [
             {
                 'link': 'http://www.foodbeast.com/',
+                'xpath': '//div[@class="storie_right"]//a',
+                'follow': '//ol[@class="wp-paginate"]//li/a'
             },
             {
                 'link': 'http://www.independent.co.uk/life-style/food-and-drink/news/',
@@ -239,11 +243,7 @@ CATEGORIES = [
             },
             {
                 'link': 'http://www.foodsafetynews.com/',
-            },
-            {
-                'link': 'http://www.sciencedaily.com/news/plants_animals/food/',
-                'xpath': '//div[@class="section_headlines"]//a',
-                'follow': '//div[@id="summaries_button"]/a'
+                'regex': r'/\d{4}/\d{2}/'
             },
             {
                 'link': 'http://www.specialtyfood.com/news-trends/publications/specialty-food-news/',
@@ -342,16 +342,15 @@ CATEGORIES = [
         'data': [
             {
                 'link': 'http://www.bhg.com/',
+                'regex': r'/gardening|decorating|home-improvement/'
             },
             {
                 'link': 'http://www.houseandgarden.co.uk/',
+                'regex': r'/interiors|outdoor-spaces/'
             },
             {
                 'link': 'http://www.housetohome.co.uk/',
-            },
-            {
-                'link': 'https://au.lifestyle.yahoo.com/better-homes-gardens/',
-                'regex': r'/better-homes-gardens/'
+                'regex': r'/house-tours|room/'
             }
         ]
     },
@@ -379,22 +378,20 @@ CATEGORIES = [
     {
         'category': 'Hobbies & Leisure',
         'data': [
-            {
-                'link': 'http://www.topix.com/hobbies',
-                'regex': r'/hobbies/'
-            },
-            {
-                'link': 'http://www.foxnews.com/leisure/index.html',
-                'regex': r'/leisure/'
-            },
-            {
-                'link': 'http://abc7news.com/topic/hobbies/',
-                'regex': r'/hobbies/'
-            },
-            {
-                'link': 'http://6abc.com/topic/hobbies/',
-                'regex': r'/hobbies/'
-            }
+            # {
+            #     'link': 'http://abc7news.com/topic/hobbies/',
+            #     'regex': r'/hobbies/'
+            # },
+            # {
+            #     'link': 'http://www.leisureopportunities.co.uk/detail.cfm?pagetype=news&subject=NONE',
+            #     'regex': '//span[@class="a2"]/a',
+            #     'follow': '//span[@class="style125"]/a'
+            # },
+            # {
+            #     'link': 'http://www.economist.com/topics/hobbies-and-pastimes',
+            #     'regex': '//p[@class="topic-item-title"]//a',
+            #     'follow': '//li[@class="pager-item even"]/a'
+            # }
         ]
     },
     {
@@ -402,7 +399,7 @@ CATEGORIES = [
         'data': [
             {
                 'link': 'http://www.health.com/health/',
-                'regex': r'/health/'
+                'regex': r'/health/healthy-happy'
             },
             {
                 'link': 'http://edition.cnn.com/HEALTH/',
@@ -410,7 +407,7 @@ CATEGORIES = [
             },
             {
                 'link': 'http://www.bbc.com/news/health/',
-                'regex': r'/news/health'
+                'regex': r'health'
             }
         ]
     },
@@ -419,7 +416,7 @@ CATEGORIES = [
         'data': [
             {
                 'link': 'http://www.bbc.com/news/business/',
-                'regex': r'/news/business'
+                'regex': r'/business/'
             },
             {
                 'link': 'http://www.theguardian.com/uk/business',

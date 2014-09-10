@@ -11,7 +11,7 @@
 BOT_NAME = 'news_crawler'
 # LOG_LEVEL = 'INFO'
 # DOWNLOAD_DELAY = 1
-MAX_ITEMS = 5000
+MAX_ITEMS = 10000
 SPIDER_MODULES = ['news_crawler.spiders']
 NEWSPIDER_MODULE = 'news_crawler.spiders'
 
@@ -66,7 +66,7 @@ USER_AGENTS = [
 
 DB_HOST = '127.0.0.1'
 DB_PORT = 27017
-DB_NAME = 'lion_training_data_2'
+DB_NAME = 'lion_training_data'
 
 from pymongo import MongoClient
 

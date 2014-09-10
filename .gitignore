@@ -60,3 +60,5 @@ items/
 news_crawler/data/training_data/
 venv/
 twistd.pid
+*.swo
+*.swp

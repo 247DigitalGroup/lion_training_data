@@ -24,13 +24,14 @@ class NewsSpider(Spider):
 
     name = "data"
     settings = {
-        # 'LOG_LEVEL': 'DEBUG',
-        'CLOSESPIDER_ITEMCOUNT': MAX_ITEMS,
-        'CONCURRENT_REQUESTS_PER_DOMAIN': 2,
-        'DOWNLOAD_TIMEOUT': 30,
+        'LOG_LEVEL': 'INFO',
+        'CLOSESPIDER_ITEMCOUNT': MAX_ITEMS + 1000,
+        'CONCURRENT_REQUESTS': 100,
+        'CONCURRENT_REQUESTS_PER_DOMAIN': 4,
+        'DOWNLOAD_TIMEOUT': 15,
         'COOKIES_ENABLED': False,
         'RETRY_ENABLED': False,
-        'REDIRECT_ENABLED': True,
+        'REDIRECT_ENABLED': False,
         'REDIRECT_MAX_TIMES': 1,
         'AJAXCRAWL_ENABLED': True,
     }
@@ -158,16 +159,20 @@ class NewsSpider(Spider):
         for link in links:
             yield Request(link.url, callback=self.parse_article, meta={
                 'site': site})
-        links = self._extract_links(response, {
-            'restrict_xpaths': site.get('follow', ())})
-        for link in links:
-            yield Request(link.url, callback=self.parse_article, meta={
-                'site': site})
+        if 'follow' in site:
+            links = self._extract_links(response, {
+                'restrict_xpaths': site['follow']})
+            for link in links:
+                yield Request(link.url, callback=self.parse_article, meta={
+                    'site': site})
 
         loader = DefaultItemLoader(item=ArticleItem(), response=response)
         loader.add_value('link', response.url)
         loader.add_value('category', self.category)
         loader = self.parse_content(response.body, loader)
+
+        if not loader.get_output_value('body'):
+            return
 
         yield loader.load_item()
 

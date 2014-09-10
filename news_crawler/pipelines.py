@@ -39,7 +39,7 @@ class NewsCrawlerPipeline(object):
         """ handles article items """
 
         doc = dict(item)
-        _id = hashlib.sha1(doc['link']).hexdigest()
+        _id = hashlib.sha1(doc['body'].encode('utf8')).hexdigest()
         result = db.links.find({'_id': _id}, {'_id': 1}).limit(1).count()
         if result:
             doc['last_modified'] = datetime.now()
