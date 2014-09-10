@@ -60,6 +60,7 @@ def check_duplicates():
         if value in seen:
             count += 1
             print row['category'], row['_id']
+            db.links.remove({'_id': row['_id']})
         else:
             seen.add(value)
     print count
