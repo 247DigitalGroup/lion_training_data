@@ -25,7 +25,7 @@ class NewsSpider(Spider):
     name = "data"
     settings = {
         'LOG_LEVEL': 'INFO',
-        'CLOSESPIDER_ITEMCOUNT': MAX_ITEMS + 1000,
+        'CLOSESPIDER_ITEMCOUNT': MAX_ITEMS,
         'CONCURRENT_REQUESTS': 100,
         'CONCURRENT_REQUESTS_PER_DOMAIN': 4,
         'DOWNLOAD_TIMEOUT': 15,

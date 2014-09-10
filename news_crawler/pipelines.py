@@ -1,26 +1,40 @@
 # -*- coding: utf-8 -*-
 
+""" scrapy's pipelines """
+
+
 # Define your item pipelines here
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
-from news_crawler.settings import db
+from news_crawler.settings import db, local_redis
 from news_crawler.items import ArticleItem
 from datetime import datetime
 import hashlib
 from scrapy.exceptions import DropItem
 
 
-class ValidateCategoriesPipeline(object):
+class DuplicatesPipeline(object):
     """ to make sure categories is not empty """
+
+    # def __init__(self, *args, **kwargs):
+    #     self.seen = set()
+    #     for row in db.links.find():
+    #         value = hashlib.md5(row['body'].encode('utf8')).hexdigest()
+    #         if value in self.seen:
+    #             db.links.remove({'_id': row['_id']})
+    #         else:
+    #             self.seen.add(value)
 
     @classmethod
     def process_item(cls, item, spider):
         """ global processor """
 
-        if len(item.get('categories', [])) == 0:
-            raise DropItem('categories empty: %s' % item['link'])
+        value = hashlib.md5(item['body'].encode('utf8')).hexdigest()
+        result = local_redis.set('training_data_seen', value)
+        if not result:
+            raise DropItem()
         return item
 
 
@@ -40,10 +54,9 @@ class NewsCrawlerPipeline(object):
 
         doc = dict(item)
         _id = hashlib.sha1(doc['body'].encode('utf8')).hexdigest()
-        result = db.links.find({'_id': _id}, {'_id': 1}).limit(1).count()
-        if result:
-            doc['last_modified'] = datetime.now()
-        else:
-            doc['created_at'] = datetime.now()
+        result = local_redis.sadd('training_data_seen', _id)
+        if not result:
+            return
+        doc['created_at'] = datetime.now()
         fields = {key: value for (key, value) in doc.iteritems()}
         db.links.update({'_id': _id}, {'$set': fields}, upsert=True)

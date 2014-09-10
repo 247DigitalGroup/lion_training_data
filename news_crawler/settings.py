@@ -22,6 +22,7 @@ DOWNLOADER_MIDDLEWARES = {
 }
 
 ITEM_PIPELINES = {
+    # 'news_crawler.pipelines.DuplicatesPipeline': 100,
     'news_crawler.pipelines.NewsCrawlerPipeline': 200,
 }
 
@@ -72,3 +73,11 @@ from pymongo import MongoClient
 
 db = MongoClient(DB_HOST, DB_PORT)
 db = db[DB_NAME]
+
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = 6379
+LOCAL_DB = 14
+
+import redis
+
+local_redis = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=LOCAL_DB)
