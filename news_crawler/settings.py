@@ -69,15 +69,18 @@ DB_HOST = '127.0.0.1'
 DB_PORT = 27017
 DB_NAME = 'lion_training_data'
 
-from pymongo import MongoClient
-
-db = MongoClient(DB_HOST, DB_PORT)
-db = db[DB_NAME]
-
 REDIS_HOST = '127.0.0.1'
 REDIS_PORT = 6379
 LOCAL_DB = 14
 
+from pymongo import MongoClient
 import redis
 
+try:
+    from local_settings import *
+except:
+    pass
+
+db = MongoClient(DB_HOST, DB_PORT)
+db = db[DB_NAME]
 local_redis = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=LOCAL_DB)
