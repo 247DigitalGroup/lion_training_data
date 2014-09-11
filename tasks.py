@@ -33,7 +33,7 @@ def news_spider(category):
     }
     req = requests.post('http://localhost:6800/schedule.json', data=payload)
     result = json.loads(req.text)
-    result['spider'] = 'news'
+    result['spider'] = 'data'
     result['created_at'] = datetime.now()
     print result
 
@@ -50,6 +50,7 @@ def write_data(f_write, topic_id, data):
         body = normalize_body(each['body'])
         f_write.write(str(topic_id) + '\t'+ body)
 
+
 def check_duplicates():
     """ check duplicates in db """
     rows = db.links.find()
@@ -60,7 +61,7 @@ def check_duplicates():
         if value in seen:
             count += 1
             print row['category'], row['_id']
-            db.links.remove({'_id': row['_id']})
+            # db.links.remove({'_id': row['_id']})
         else:
             seen.add(value)
     print count
@@ -109,12 +110,23 @@ def count_data():
         print cat['category'], count
     print "-------------------\n"
 
+
 def push_seen_data_to_redis():
     """ push seen data to redis """
 
     for row in db.links.find():
         value = hashlib.md5(row['body'].encode('utf8')).hexdigest()
         local_redis.sadd('training_data_seen', value)
+
+def make_md5():
+    for row in db.links.find():
+        doc = dict(row)
+        del doc['_id']
+        _id = hashlib.md5(row['body'].encode('utf8')).hexdigest()
+        fields = {key: value for (key, value) in doc.iteritems()}
+        db.new_links.update({'_id': _id}, {'$set': fields}, upsert=True)
+
+
 
 
 # def remove_duplicates():
@@ -155,8 +167,12 @@ def push_seen_data_to_redis():
 
 
 if __name__ == '__main__':
-    # news_spider('Vehicles')
+    news_spider('Beauty & Personal Care')
+    news_spider('Travel & Tourism')
+    news_spider('Vehicles')
     # master_run()
     count_data()
     # build_data()
     check_duplicates()
+    # make_md5()
+    # push_seen_data_to_redis()

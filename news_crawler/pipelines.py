@@ -53,7 +53,7 @@ class NewsCrawlerPipeline(object):
         """ handles article items """
 
         doc = dict(item)
-        _id = hashlib.sha1(doc['body'].encode('utf8')).hexdigest()
+        _id = hashlib.md5(doc['body'].encode('utf8')).hexdigest()
         result = local_redis.sadd('training_data_seen', _id)
         if not result:
             return

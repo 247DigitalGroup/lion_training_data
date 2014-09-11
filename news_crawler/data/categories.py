@@ -44,6 +44,30 @@ CATEGORIES = [
                 'link': 'http://go.dallasnews.com/dining/',
                 'regex': r'/dining/',
                 'follow': '//ul[@class="pagination"]/li/a'
+            },
+            {
+                'link': 'http://ny.eater.com/tags/nightlife',
+                'xpath': '//h1[@class="post-title"]//a',
+                'follow': '//div[@id="pages"]//a'
+            },
+            {
+                'link': 'http://www.thenynightlife.com/',
+                'xpath': '//h2[@class="entry-title"]//a',
+                'follow': '//div[@class="nav-previous"]//a'
+            },
+            {
+                'link': 'http://www.northjersey.com/food-and-dining-news/dining-news',
+                'xpath': '//div[@class="topicstorytitle"]//a',
+                'follow': '//a[@class="morelink1"]'
+            },
+            {
+                'link': 'http://www.bostonnightclubnews.com/nightclubs.html',
+                'xpath': '//font[@face="Arial"]//a',
+            },
+            {
+                'link': 'http://www.santabarbara.com/dining/news/',
+                'xpath': '//h2[@class="entry-title"]//a',
+                'follow': '//div[@class="nav-previous"]//a'
             }
         ]
     },
@@ -51,20 +75,25 @@ CATEGORIES = [
         'category': 'News, Media & Publications',
         'data': [
             {
-                'link': 'http://mashable.com/',
-                'regex': r'/\d+/\d+/\d+/.+'
-            },
-            {
-                'link': 'http://www.buzzfeed.com/',
-            },
-            {
-                'link': 'http://www.nytimes.com/',
+                'link': 'http://www.buzzfeed.com/news',
             },
             {
                 'link': 'http://www.huffingtonpost.com/',
+                'regex': r'ir=Media'
+
             },
             {
-                'link': 'http://techcrunch.com/',
+                'link': 'http://www.opcw.org/news-publications/',
+                'xpath': '//div[@class="news-text"]//a',
+                'follow': '//div[@class="browseLinksWrap"]//a'
+            },
+            {
+                'link': 'http://www.mediapost.com/',
+                'regex': r'/article/'
+            },
+            {
+                'link': 'http://www.wwd.com/media-news/media-features?module=subcat',
+                'regex': r'media-news',
             }
         ]
     },
@@ -101,17 +130,24 @@ CATEGORIES = [
             },
             {
                 'link': 'http://www.budde.com.au/',
-                'regex': 'all'
+                'regex': r'Research'
             },
             {
                 'link': 'http://www.telecomramblings.com/',
+                'xpath': '//div[@class="entrybox"]//a',
+                'follow': '//div[@class="wp-pagenavi"]//a'
             },
             {
-                'link': 'http://www.internetnews.com/',
+                'link': 'http://www.internetnews.com/blog/archives.php',
+                'regex': r'blog',
+                'follow': '//a[@class="avail"]'
             },
             {
-                'link': 'http://www.internet.com/',
+                'link': 'http://www.internetsociety.org/blog/tech-matters?page=0',
+                'xpath': '//span[@class="field-content"]//a',
+                'follow': '//li[@class="pager-next last"]//a'
             }
+
         ]
     },
     {

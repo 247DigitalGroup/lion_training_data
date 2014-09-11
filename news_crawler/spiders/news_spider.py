@@ -24,11 +24,11 @@ class NewsSpider(Spider):
 
     name = "data"
     settings = {
-        'LOG_LEVEL': 'INFO',
+        'LOG_LEVEL': 'DEBUG',
         'CLOSESPIDER_ITEMCOUNT': MAX_ITEMS,
         'CONCURRENT_REQUESTS': 100,
         'CONCURRENT_REQUESTS_PER_DOMAIN': 4,
-        'DOWNLOAD_TIMEOUT': 15,
+        'DOWNLOAD_TIMEOUT': 30,
         'COOKIES_ENABLED': False,
         'RETRY_ENABLED': False,
         'REDIRECT_ENABLED': False,
