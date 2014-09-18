@@ -10,6 +10,7 @@ except ImportError:
     import json
 from news_crawler.data.categories import CATEGORIES as categories
 from news_crawler.settings import db, local_redis
+from news_crawler.settings import MAX_ITEMS
 import os
 import time
 import hashlib
@@ -20,7 +21,9 @@ def master_run():
     """ scheduling news_spider to all sitess """
 
     for cat in categories:
-        news_spider(cat['category'])
+        count = db.links.find({'category': cat['category']}).count()
+        if count < MAX_ITEMS:
+            news_spider(cat['category'])
 
 
 def news_spider(category):
@@ -48,11 +51,13 @@ def write_data(f_write, topic_id, data):
     """ write out data """
     for each in data:
         body = normalize_body(each['body'])
-        f_write.write(str(topic_id) + '\t'+ body)
+        f_write.write(str(topic_id) + '\t' + body)
 
 
 def check_duplicates():
     """ check duplicates in db """
+    print "Building data set...\n"
+
     rows = db.links.find()
     seen = set()
     count = 0
@@ -64,7 +69,8 @@ def check_duplicates():
             # db.links.remove({'_id': row['_id']})
         else:
             seen.add(value)
-    print count
+    print count, 'duplicate(s)'
+    print "-------------------\n"
 
 
 def build_data():
@@ -73,7 +79,7 @@ def build_data():
     print "Building data set...\n"
 
     ratio = 0.8
-    quantity = 1000
+    quantity = 10000
     path = 'news_crawler/data/training_data/%s' % time.strftime('%d-%m-%Y %H%M%S')
     os.makedirs(path, 0755)
     f_train = open('%s/train_file' % path, 'ab')
@@ -87,9 +93,9 @@ def build_data():
             data = db.links.find(
                 {'category': cat['category'], 'body': {'$exists': True}}).limit(quantity)
             data = list(data)
-            if len(data) < int(ratio*quantity):
-                print 'DROPPED', cat['category'], len(data)
-                continue
+            # if len(data) < int(ratio*quantity):
+            #     print 'DROPPED', cat['category'], len(data)
+            #     continue
             print cat['category'], len(data)
             train_data = data[:int(ratio*len(data))]
             test_data = data[int(ratio*len(data)):]
@@ -118,6 +124,7 @@ def push_seen_data_to_redis():
         value = hashlib.md5(row['body'].encode('utf8')).hexdigest()
         local_redis.sadd('training_data_seen', value)
 
+
 def make_md5():
     for row in db.links.find():
         doc = dict(row)
@@ -127,52 +134,14 @@ def make_md5():
         db.new_links.update({'_id': _id}, {'$set': fields}, upsert=True)
 
 
-
-
-# def remove_duplicates():
-#     """ remove duplicates """
-#
-#     def get_final_data(seen, data):
-#         """ get unique data """
-#         final_data = []
-#         for line in data:
-#             category = line.split('\t')[0].strip()
-#             body = ''.join(line.split('\t')[1:]).strip()
-#             hash_value = hashlib.md5(body).hexdigest()
-#             if hash_value not in seen:
-#                 final_data.append(category + '\t' + body + '\n')
-#                 seen.add(hash_value)
-#         return final_data
-#
-#
-#     path = 'news_crawler/data/training_data/1'
-#     f_train = open('%s/train_file' % path, 'r')
-#     f_test = open('%s/test_file' % path, 'r')
-#     seen = set()
-#     final_train = get_final_data(seen, f_train)
-#     final_test = get_final_data(seen, f_test)
-#     print len(final_train), len(final_test)
-#     write_data('%s/train_file_truncated' % path, final_train)
-#     write_data('%s/test_file_truncated' % path, final_test)
-
-    # dups_count = len(set(encoded_train) & set(encoded_test))
-    # self_duplicates_train = [k for k, v in Counter(encoded_train).items() if v > 1]
-    # print 'duplicates in training data(itself):', len(
-    #     self_duplicates_train), 'of', len(encoded_train)
-    # self_duplicates_test = [k for k, v in Counter(encoded_test).items() if v > 1]
-    # print 'duplicates in testing data(itself):', len(
-    #     self_duplicates_test), 'of', len(encoded_test)
-    # print 'duplicates of testing in training data:', dups_count, 'of', len(
-    #     encoded_test), 'in', len(encoded_train)
-
-
 if __name__ == '__main__':
-    news_spider('Beauty & Personal Care')
-    news_spider('Travel & Tourism')
-    news_spider('Vehicles')
+    # push_seen_data_to_redis()
+
+    # news_spider('Travel & Tourism')
+    # news_spider('Jobs & Education')
+    # news_spider('Home & Garden')
     # master_run()
     count_data()
-    # build_data()
-    check_duplicates()
+    # check_duplicates()
+    build_data()
     # make_md5()
-    # push_seen_data_to_redis()

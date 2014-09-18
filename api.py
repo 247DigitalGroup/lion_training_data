@@ -8,6 +8,9 @@ import simplejson as json
 def get_topic_id(category=None):
     """ get topic id """
 
+    if category == 'Jobs & Education':
+        category = 'Jobs'
+
     url = 'http://api.clicklion.net/topics'
     headers = {'Authorization': 'Token token="add7f5dd104645676a0c7a21d47bacaf"'}
     response = requests.get(url, headers=headers)

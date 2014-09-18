@@ -24,14 +24,14 @@ class NewsSpider(Spider):
 
     name = "data"
     settings = {
-        'LOG_LEVEL': 'DEBUG',
+        # 'LOG_LEVEL': 'DEBUG',
         'CLOSESPIDER_ITEMCOUNT': MAX_ITEMS,
         'CONCURRENT_REQUESTS': 100,
         'CONCURRENT_REQUESTS_PER_DOMAIN': 4,
         'DOWNLOAD_TIMEOUT': 30,
         'COOKIES_ENABLED': False,
         'RETRY_ENABLED': False,
-        'REDIRECT_ENABLED': False,
+        'REDIRECT_ENABLED': True,
         'REDIRECT_MAX_TIMES': 1,
         'AJAXCRAWL_ENABLED': True,
     }
@@ -86,7 +86,7 @@ class NewsSpider(Spider):
             site['domain'] = domain
             self.category = self.get_category_by_link(self.link)
             yield Request(
-                self.link, callback=self.parse_article, meta={'site': site})
+                self.link, callback=self.parse_article, meta={'site': site, 'select': False})
         else:
             sites = self.get_sites_by_category(self.category)
             for site in sites:
@@ -94,7 +94,7 @@ class NewsSpider(Spider):
                 self.allowed_domains.add(domain)
                 site['domain'] = domain
                 yield Request(
-                    site['link'], callback=self.parse_article, meta={'site': site})
+                    site['link'], callback=self.parse_article, meta={'site': site, 'select': False})
 
     def parse(self, response):
         pass
@@ -145,6 +145,14 @@ class NewsSpider(Spider):
                 final_links.append(link)
         return final_links
 
+    @classmethod
+    def acceptable_body(cls, body):
+        """ Accepts body of equal or greater than 100 characters """
+
+        if not body or len(body) < 100:
+            return False
+        return True
+
     def parse_article(self, response):
         """ parse article pages from response """
 
@@ -158,23 +166,24 @@ class NewsSpider(Spider):
             'restrict_xpaths': site.get('xpath', ())})
         for link in links:
             yield Request(link.url, callback=self.parse_article, meta={
-                'site': site})
+                'site': site, 'select': True})
         if 'follow' in site:
             links = self._extract_links(response, {
                 'restrict_xpaths': site['follow']})
             for link in links:
                 yield Request(link.url, callback=self.parse_article, meta={
-                    'site': site})
+                    'site': site, 'select': False})
 
-        loader = DefaultItemLoader(item=ArticleItem(), response=response)
-        loader.add_value('link', response.url)
-        loader.add_value('category', self.category)
-        loader = self.parse_content(response.body, loader)
+        if response.request.meta['select']:
+            loader = DefaultItemLoader(item=ArticleItem(), response=response)
+            loader.add_value('link', response.url)
+            loader.add_value('category', self.category)
+            loader = self.parse_content(response.body, loader)
 
-        if not loader.get_output_value('body'):
-            return
+            if not self.acceptable_body(loader.get_output_value('body')):
+                return
 
-        yield loader.load_item()
+            yield loader.load_item()
 
     @classmethod
     def extract_title(cls, loader):
@@ -194,20 +203,21 @@ class NewsSpider(Spider):
                 loader.replace_value('title', title)
                 return
 
-    def parse_content(self, html, loader):
+    @classmethod
+    def parse_content(cls, html, loader):
         """ parse content(title, body) from html """
 
-        self.extract_title(loader)
+        # self.extract_title(loader)
         goose_obj = Goose()
         try:
             article = goose_obj.extract(raw_html=html)
         except:
             return loader
-        self.choose_best_title(
-            loader, article.title, loader.get_collected_values('raw_title'))
         loader.add_value('body', article.cleaned_text)
-        try:
-            loader.add_value('image_url', article.top_image.src)
-        except:
-            pass
+        # self.choose_best_title(
+        #     loader, article.title, loader.get_collected_values('raw_title'))
+        # try:
+        #     loader.add_value('image_url', article.top_image.src)
+        # except:
+        #     pass
         return loader

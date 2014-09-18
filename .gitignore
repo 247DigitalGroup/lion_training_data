@@ -62,3 +62,5 @@ venv/
 twistd.pid
 *.swo
 *.swp
+*.swn
+dump.rdb
