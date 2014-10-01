@@ -24,7 +24,7 @@ class NewsSpider(Spider):
 
     name = "data"
     settings = {
-        # 'LOG_LEVEL': 'DEBUG',
+        'LOG_LEVEL': 'INFO',
         'CLOSESPIDER_ITEMCOUNT': MAX_ITEMS,
         'CONCURRENT_REQUESTS': 100,
         'CONCURRENT_REQUESTS_PER_DOMAIN': 4,
@@ -185,39 +185,36 @@ class NewsSpider(Spider):
 
             yield loader.load_item()
 
-    @classmethod
-    def extract_title(cls, loader):
-        """ extract title """
 
-        loader.add_xpath(
-            'raw_title', '//h1//text() | //h2//text() | //h3//text()')
+    # @classmethod
+    # def extract_title(cls, loader):
+    #     """ extract title """
 
-    @classmethod
-    def choose_best_title(cls, loader, title_hint, candidates):
-        """ choose the best title from candidates """
+    #     loader.add_xpath(
+    #         'raw_title', '//h1//text() | //h2//text() | //h3//text()')
 
-        for title in candidates:
-            ratio = Levenshtein.ratio(title_hint, title)
-            if ratio > 0.8:
-                # print title, '---', title_hint
-                loader.replace_value('title', title)
-                return
+    # @classmethod
+    # def choose_best_title(cls, loader, title_hint, candidates):
+    #     """ choose the best title from candidates """
+
+    #     for title in candidates:
+    #         ratio = Levenshtein.ratio(title_hint, title)
+    #         if ratio > 0.8:
+    #             # print title, '---', title_hint
+    #             loader.replace_value('title', title)
+    #             return
 
     @classmethod
     def parse_content(cls, html, loader):
         """ parse content(title, body) from html """
 
-        # self.extract_title(loader)
-        goose_obj = Goose()
         try:
+            goose_obj = Goose()
             article = goose_obj.extract(raw_html=html)
+            loader.add_value('body', article.cleaned_text)
         except:
-            return loader
-        loader.add_value('body', article.cleaned_text)
+            pass
+        return loader
+        # self.extract_title(loader)
         # self.choose_best_title(
         #     loader, article.title, loader.get_collected_values('raw_title'))
-        # try:
-        #     loader.add_value('image_url', article.top_image.src)
-        # except:
-        #     pass
-        return loader

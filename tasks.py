@@ -134,6 +134,31 @@ def make_md5():
         db.new_links.update({'_id': _id}, {'$set': fields}, upsert=True)
 
 
+def review():
+    f = open('predict_results.txt', 'rb')
+    results = []
+    for line in f:
+        body = ' '.join(line.split(' ')[2:]).strip()
+        body_part = body[:20]
+        if not body_part:
+            continue
+        print body_part
+        result = db.links.find({'body': {'$regex': body_part}}).limit(1)
+        try:
+            results.append(result[0]['link'])
+            print body_part, result[0]['link']
+        except:
+            continue
+    f.close()
+    f = open('results.txt', 'wb')
+    for each in results:
+        f.write(each + '\n')
+    f.close()
+
+
+
+
+
 if __name__ == '__main__':
     # push_seen_data_to_redis()
 
@@ -143,5 +168,6 @@ if __name__ == '__main__':
     # master_run()
     count_data()
     # check_duplicates()
-    build_data()
+    # build_data()
     # make_md5()
+    # review()

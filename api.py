@@ -14,7 +14,10 @@ def get_topic_id(category=None):
     url = 'http://api.clicklion.net/topics'
     headers = {'Authorization': 'Token token="add7f5dd104645676a0c7a21d47bacaf"'}
     response = requests.get(url, headers=headers)
-    response = dict(json.loads(response.text))
+    try:
+        response = dict(json.loads(response.text))
+    except:
+        print response.text
     for topic_id, topic in response.iteritems():
         if topic.lower() == category.lower():
             return topic_id
