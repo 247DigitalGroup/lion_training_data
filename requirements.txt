@@ -10,3 +10,6 @@ numpy
 git+https://github.com/grangier/python-goose.git
 git+https://github.com/saffsd/langid.py.git
 python-levenshtein
+requests
+simplejson
+selenium

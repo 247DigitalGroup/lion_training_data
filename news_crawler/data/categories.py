@@ -49,11 +49,11 @@ CATEGORIES = [
                 'xpath': '//tr[@class="questexcontenttr"]//a',
                 'follow': '//ul[@class="pager"]//a'
             },
-            {
-                'link': 'http://nrn.com/taxonomy/term/44074/more',
-                'xpath': '//h3[@class="title"]//a',
-                'follow': '//ul[@class="pager"]/li/a'
-            },
+            # {
+            #     'link': 'http://nrn.com/taxonomy/term/44074/more',
+            #     'xpath': '//h3[@class="title"]//a',
+            #     'follow': '//ul[@class="pager"]/li/a'
+            # },
             {
                 'link': 'http://ny.eater.com/tags/nightlife',
                 'xpath': '//h1[@class="post-title"]//a',
@@ -385,11 +385,11 @@ CATEGORIES = [
     {
         'category': 'Beauty & Personal Care',
         'data': [
-            {
-                'link': 'http://www.mintel.com/category/press-centre/beauty-and-personal-care',
-                'xpath': '//div[@class="post-title-press"]/h2/a',
-                'follow': '//div[@class="pagination"]/a'
-            },
+            # {
+            #     'link': 'http://www.mintel.com/category/press-centre/beauty-and-personal-care',
+            #     'xpath': '//div[@class="post-title-press"]/h2/a',
+            #     'follow': '//div[@class="pagination"]/a'
+            # },
             {
                 'link': 'http://www.dailymail.co.uk/femail/beauty/index.html',
                 'regex': 'beauty',
@@ -415,23 +415,68 @@ CATEGORIES = [
                 'xpath': '//div[@class="post-info"]//a',
                 'follow': '//div[@class="news-pager"]//a'
             },
-            {
-                'link': 'http://www.euromonitor.com/beauty-and-personal-care',
-                'xpath': '//div[@class="articleListStandard"]//a',
-                'follow': '//div[@class="pages"]//a'
-            },
+            # {
+            #     'link': 'http://www.euromonitor.com/beauty-and-personal-care',
+            #     'xpath': '//div[@class="articleListStandard"]//a',
+            #     'follow': '//div[@class="pages"]//a'
+            # },
             {
                 'link': 'http://www.newsforshoppers.com/section/home/personal-care/',
                 'xpath': '//div[@class="recent-item"]//a',
                 'follow': '//div[@class="pagination"]//a'
             },
             {
-                'link': 'http://www.beautyworldnews.com/archives/',
+                'link': 'http://www.beautyworldnews.com/make-up/',
                 'xpath': '//dd[@class="tit"]//a',
                 'follow': '//div[@id="page_num"]//a'
             },
             {
-                'link': 'http://www.vogue.com.au/beauty/news/',
+                'link': 'http://www.beautyworldnews.com/skin/',
+                'xpath': '//dd[@class="tit"]//a',
+                'follow': '//div[@id="page_num"]//a'
+            },
+            {
+                'link': 'http://www.beautyworldnews.com/hair/',
+                'xpath': '//dd[@class="tit"]//a',
+                'follow': '//div[@id="page_num"]//a'
+            },
+            {
+                'link': 'http://www.beautyworldnews.com/fragrance/',
+                'xpath': '//dd[@class="tit"]//a',
+                'follow': '//div[@id="page_num"]//a'
+            },
+            {
+                'link': 'http://www.beautyworldnews.com/nail/',
+                'xpath': '//dd[@class="tit"]//a',
+                'follow': '//div[@id="page_num"]//a'
+            },
+            {
+                'link': 'http://www.beautyworldnews.com/accessories/',
+                'xpath': '//dd[@class="tit"]//a',
+                'follow': '//div[@id="page_num"]//a'
+            },
+            {
+                'link': 'http://www.vogue.com.au/beauty/trends/',
+                'xpath': '//h3[@class="heading"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.vogue.com.au/beauty/skin/',
+                'xpath': '//h3[@class="heading"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.vogue.com.au/beauty/hair+insider/',
+                'xpath': '//h3[@class="heading"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.vogue.com.au/beauty/makeup/',
+                'xpath': '//h3[@class="heading"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.vogue.com.au/beauty/wellbeing/',
                 'xpath': '//h3[@class="heading"]//a',
                 'follow': '//div[@class="pagination"]//a'
             },
@@ -469,11 +514,6 @@ CATEGORIES = [
                 'link': 'http://www.latestinbeauty.com/blog/',
                 'xpath': '//div[@class="post-heading"]//a',
                 'follow': '//div[@class="alignleft"]//a'
-            },
-            {
-                'link': 'http://gulfnews.com/life-style/beauty-fashion',
-                'xpath': '//ul[@class="overview noborder"]//a',
-                'follow': '//ul[@class="pagination"]//a'
             },
             {
                 'link': 'http://www.nowmagazine.co.uk/articles/list/lp/beauty-news',
@@ -584,11 +624,11 @@ CATEGORIES = [
                 'xpath': '//div[@class="text"]//a[contains(@href, "food-and-drink")]',
                 'follow': '/div[@class="pagination"]//a'
             },
-            {
-                'link': 'http://www.foodsafetynews.com/',
-                'xpath': '//h2[@class="post-title"]//a',
-                'follow': '//li[@class="pagination-old"]//a'
-            },
+            # {
+            #     'link': 'http://www.foodsafetynews.com/',
+            #     'xpath': '//h2[@class="post-title"]//a',
+            #     'follow': '//li[@class="pagination-old"]//a'
+            # },
             {
                 'link': 'http://www.specialtyfood.com/news-trends/publications/specialty-food-news/',
                 'xpath': '//h2[@class="headlines left"]//a',
@@ -614,21 +654,46 @@ CATEGORIES = [
                 'xpath': '//h3[@class="blogroll_title"]//a',
                 'follow': '//div[@class="wp-pagenavi"]//a'
             },
-            {
-                'link': 'http://www.foodincanada.com/news/',
-                'xpath': '//a[@rel="bookmark"]',
-                'follow': '//ul[@class="pagination"]//a'
-            }
+            # {
+            #     'link': 'http://www.foodincanada.com/news/',
+            #     'xpath': '//a[@rel="bookmark"]',
+            #     'follow': '//ul[@class="pagination"]//a'
+            # }
         ]
     },
     {
         'category': 'Apparel',
         'data': [
             {
-                'link': 'http://commonthread.alternativeapparel.com/',
-                'xpath': '//h2[@class="entry-title"]//a',
-                'follow': '//a[@class="page-numbers"]'
+                'link': 'http://gulfnews.com/life-style/beauty-fashion',
+                'xpath': '//ul[@class="overview noborder"]//a',
+                'follow': '//ul[@class="pagination"]//a'
             },
+            {
+                'link': 'http://www.vogue.com.au/fashion/trends/',
+                'xpath': '//h3[@class="heading"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.vogue.com.au/fashion/what+do+i+wear/',
+                'xpath': '//h3[@class="heading"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.vogue.com.au/fashion/street+style/',
+                'xpath': '//h3[@class="heading"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.vogue.com.au/fashion/accessories/',
+                'xpath': '//h3[@class="heading"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            # {
+            #     'link': 'http://commonthread.alternativeapparel.com/',
+            #     'xpath': '//h2[@class="entry-title"]//a',
+            #     'follow': '//a[@class="page-numbers"]'
+            # },
             {
                 'link': 'http://www.fibre2fashion.com/news/apparel-news/',
                 'xpath': '//a[@class="Indexnewstitle"]',
@@ -639,18 +704,23 @@ CATEGORIES = [
                 'xpath': '//span[@class="articlenamelinks"]//a',
                 'follow': '//div[@class="PagerControl"]//a'
             },
+            # {
+            #     'link': 'http://jezebel.com/tag/american-apparel',
+            #     'xpath': '//h1[@class="headline h5 hover-highlight entry-title"]//a',
+            #     'follow': '//div[@class="text-center mbx"]//a'
+            # },
+            # {
+            #     'link': 'http://www.elle.com/runway/',
+            #     'xpath': '//h2[@class="title"]//a',
+            #     'follow': '//a[@rel="archives"]'
+            # },
             {
-                'link': 'http://jezebel.com/tag/american-apparel',
-                'xpath': '//h1[@class="headline h5 hover-highlight entry-title"]//a',
-                'follow': '//div[@class="text-center mbx"]//a'
+                'link': 'http://www.graziadaily.co.uk/fashion/tips',
+                'xpath': '//div[@class="desc"]//a',
+                'follow': '//a[@title="More Stories"]'
             },
             {
-                'link': 'http://www.elle.com/news/fashion-style/',
-                'xpath': '//h2[@class="title"]//a',
-                'follow': '//a[@rel="archives"]'
-            },
-            {
-                'link': 'http://www.graziadaily.co.uk/fashion/news',
+                'link': 'http://www.graziadaily.co.uk/fashion/stylehunter',
                 'xpath': '//div[@class="desc"]//a',
                 'follow': '//a[@title="More Stories"]'
             },
@@ -988,23 +1058,18 @@ CATEGORIES = [
                 'xpath': '//div[@class="title"]//a',
                 'follow': '//li[@class="pager-item"]//a'
             },
-            {
-                'link': 'http://www.homeandgardenblog.com/',
-                'xpath': '//h3[@class="post-title entry-title"]//a',
-                'follow': '//a[@class="blog-pager-older-link"]'
-            },
+            # {
+            #     'link': 'http://www.homeandgardenblog.com/',
+            #     'xpath': '//h3[@class="post-title entry-title"]//a',
+            #     'follow': '//a[@class="blog-pager-older-link"]'
+            # },
             {
                 'link': 'http://www.lifestyle.com.au/garden-ideas/',
                 'xpath': '//h2[@class="TitleText"]//a',
                 'follow': '//span[@class="Button Number"]//a'
             },
             {
-                'link': 'http://www.goodshomedesign.com/category/gardens/',
-                'xpath': '//h2[@class="entry-title"]//a',
-                'follow': '//ol[@class="wp-paginate"]//a'
-            },
-            {
-                'link': 'http://www.goodshomedesign.com/category/ideas/',
+                'link': 'http://www.goodshomedesign.com/',
                 'xpath': '//h2[@class="entry-title"]//a',
                 'follow': '//ol[@class="wp-paginate"]//a'
             },
@@ -1023,10 +1088,10 @@ CATEGORIES = [
                 'xpath': '//a[@class="quick-reads-title"]',
                 'follow': '//a[@class="rd-red-buttons"]'
             },
-            {
-                'link': 'http://realestate.msn.com/HomeAndGarden/index.aspx',
-                'xpath': '//ul[@class="linklist3"]//a'
-            },
+            # {
+            #     'link': 'http://realestate.msn.com/HomeAndGarden/index.aspx',
+            #     'xpath': '//ul[@class="linklist3"]//a'
+            # },
             {
                 'link': 'http://www.housetohome.co.uk/articles/greenliving.html',
                 'xpath': '//ul[@class="article_container "]//a',
@@ -1037,16 +1102,16 @@ CATEGORIES = [
                 'xpath': '//div[@class="content"]//a[contains(@href, "/news/")]',
                 'follow': '//a[@rel="next"]'
             },
-            {
-                'link': 'http://www.cambridge-news.co.uk/homes-and-gardens',
-                'xpath': '//h3[@class="heading heading--l"]//a',
-                'follow': '//div[@class="pagination-wrapper"]//a'
-            },
-            {
-                'link': 'http://www.sacbee.com/home_garden/v-all_stories/index.html',
-                'xpath': '//div[@class="story clearfix autohighlights"]//div[@class="title"]//a',
-                'follow': '//div[@class="spill_navigation pagination"]//a'
-            }
+            # {
+            #     'link': 'http://www.cambridge-news.co.uk/homes-and-gardens',
+            #     'xpath': '//h3[@class="heading heading--l"]//a',
+            #     'follow': '//div[@class="pagination-wrapper"]//a'
+            # },
+            # {
+            #     'link': 'http://www.sacbee.com/home_garden/v-all_stories/index.html',
+            #     'xpath': '//div[@class="story clearfix autohighlights"]//div[@class="title"]//a',
+            #     'follow': '//div[@class="spill_navigation pagination"]//a'
+            # }
 
         ]
     },
