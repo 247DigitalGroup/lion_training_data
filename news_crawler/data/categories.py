@@ -181,7 +181,7 @@ CATEGORIES = [
         ]
     },
     {
-        'category': 'Internet & Telecom',
+        'category': 'Telecom',
         'data': [
             {
                 'link': 'http://www.budde.com.au/Research/Latest.aspx',
@@ -198,41 +198,31 @@ CATEGORIES = [
                 'follow': '//div[@class="wp-pagenavi"]//a'
             },
             {
-                'link': 'http://www.internetsociety.org/blog/tech-matters',
-                'xpath': '//span[@class="field-content"]//a',
-                'follow': '//li[@class="pager-next last"]//a'
-            },
-            {
                 'link': 'http://www.telecoms.com/category/format/news/',
                 'xpath': '//h2[@class="postTitle"]//a',
                 'follow': '//div[@class="pageNavigationLinks"]//a'
             },
-            {
-                'link': 'http://www.theguardian.com/business/telecoms',
-                'xpath': '//div[@class="linktext"]//a',
-                'follow': '//ul[@class="pagination b3"]//a'
-            },
-            {
-                'link': 'http://www.websearchguide.ca/internet-news/',
-                'xpath': '//h1[@class="entry-title"]//a',
-                'follow': '//div[@class="nav-previous"]//a'
-            },
-            {
-                'link': 'http://uk.reuters.com/news/archive/technologyNews?view=page',
-                'xpath': '//div[@id="blogStyleNews"]//a[contains(@href, "article")]',
-                'follow': '//div[@class="pageNavigation"]//a'
-            },
-            {
-                'link': 'http://www.technewsworld.com/perl/section/internet/?init=22',
-                'xpath': '//div[@class="content-block"]//a[contains(@href, "/story/")]',
-                'follow': '//a[@class="section-next"]'
-            },
+            # {
+            #     'link': 'http://www.websearchguide.ca/internet-news/',
+            #     'xpath': '//h1[@class="entry-title"]//a',
+            #     'follow': '//div[@class="nav-previous"]//a'
+            # },
 
         ]
     },
     {
         'category': 'Occasions & Gifts',
         'data': [
+            {
+                'link': 'http://www.mirror.co.uk/all-about/funerals',
+                'xpath': '//div[@class="teaser-info"]//h2/a',
+                'follow': '//div[@class="pagination clearfix"]//a'
+            },
+            {
+                'link': 'http://blog.theknot.com/',
+                'xpath': '//h2[@class="a-flip"]//a',
+                'follow': '//div[@class="pagination-navigation"]//a'
+            },
             {
                 'link': 'http://www.giftsanddec.com/channel/281-gifts',
                 'xpath': '//p[@class="title"]//a',
@@ -253,11 +243,11 @@ CATEGORIES = [
                 'xpath': '//div[@class="product"]//a',
                 'follow': '//li[@class="pagenav-item  pagenav-after"]//a'
             },
-            {
-                'link': 'http://www.cafepress.com/+fox-news+gifts',
-                'xpath': '//div[@class="grid-title"]//a',
-                'follow': '//a[@rel="next"]'
-            },
+            # {
+            #     'link': 'http://www.cafepress.com/+fox-news+gifts',
+            #     'xpath': '//div[@class="grid-title"]//a',
+            #     'follow': '//a[@rel="next"]'
+            # },
             {
                 'link': 'http://lifehacker.com/tag/gifts',
                 'xpath': '//h1[@class="headline h5 hover-highlight entry-title"]//a',
@@ -279,6 +269,21 @@ CATEGORIES = [
         'category': 'Jobs & Education',
         'data': [
             {
+                'link': 'http://www.theguardian.com/education/teachertraining',
+                'xpath': '/div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            {
+                'link': 'http://www.theguardian.com/education/schools',
+                'xpath': '/div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            {
+                'link': 'http://www.theguardian.com/education/',
+                'xpath': '/div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            {
                 'link': 'http://www.indeed.com/jobs?q=&l=Hollywood%2C+FL',
                 'xpath': '//h2[@class="jobtitle"]//a',
                 'follow': '//div[@class="pagination"]//a'
@@ -288,11 +293,11 @@ CATEGORIES = [
                 'xpath': '//a[@class="jobTitle-link"]',
                 'follow': '//ul[@class="pagination-links"]//a'
             },
-            {
-                'link': 'http://jobs.bloomberg.com/go/Experienced-Jobs/515300/',
-                'xpath': '//a[@class="jobTitle-link"]',
-                'follow': '//ul[@class="pagination-links"]//a'
-            },
+            # {
+            #     'link': 'http://jobs.bloomberg.com/go/Experienced-Jobs/515300/',
+            #     'xpath': '//a[@class="jobTitle-link"]',
+            #     'follow': '//ul[@class="pagination-links"]//a'
+            # },
             {
                 'link': 'http://jobs.theguardian.com/searchjobs/',
                 'xpath': '//ul[@class="jobsList"]//a',
@@ -359,17 +364,17 @@ CATEGORIES = [
                 'xpath': '//div[@class="stream-story image"]//a',
                 'follow': '//div[@class="stream-jump"]//a'
             },
-            {
-                'link': 'http://www.businesstravelnews.com/Business-Travel-Stories/',
-                'xpath': '//div[@class="item-title"]//a',
-                'follow': '//div[@class="pagination right"]//a'
-            },
-            {
-                'link': 'http://www.pattayamail.com/travel',
-                'xpath': '//h3[@class="catItemTitle"]//a',
-                'follow': '//span[@class="pagination"]//a'
+            # {
+            #     'link': 'http://www.businesstravelnews.com/Business-Travel-Stories/',
+            #     'xpath': '//div[@class="item-title"]//a',
+            #     'follow': '//div[@class="pagination right"]//a'
+            # },
+            # {
+            #     'link': 'http://www.pattayamail.com/travel',
+            #     'xpath': '//h3[@class="catItemTitle"]//a',
+            #     'follow': '//span[@class="pagination"]//a'
 
-            },
+            # },
             {
                 'link': 'http://www.dailynewsegypt.com/category/touriism/',
                 'xpath': '//h2[@class="posttitle"]//a',
@@ -537,6 +542,16 @@ CATEGORIES = [
         'category': 'Vehicles',
         'data': [
             {
+                'link': 'http://www.cycleworld.com/category/news/',
+                'xpath': '//h2[@class="entry-title"]//a',
+                'follow': '//div[@class="alignright"]//a'
+            },
+            {
+                'link': 'http://www.motorcycle-usa.com/20/1/Motorcycle-Article-Past/Motorcycle-Review.aspx',
+                'xpath': '//div[@class="authorrepeatercontainer"]//a',
+                'follow': '//div[@class="pagingcontainerbottom"]//a'
+            },
+            {
                 'link': 'http://www.autoexpress.co.uk/car-news',
                 'xpath': '//div[@class="view-content"]//h2//a',
                 'follow': '//ul[@class="pager"]//a'
@@ -571,6 +586,16 @@ CATEGORIES = [
     {
         'category': 'Law & Government',
         'data': [
+            {
+                'link': 'http://www.economist.com/topics/government-and-politics',
+                'xpath': '//p[@class="topic-item-title"]//a',
+                'follow': '//ul[@class="pager"]//a'
+            },
+            {
+                'link': 'http://www.independent.co.uk/topic/PublicServices',
+                'xpath': '//div[@class="article news"]//a',
+                'follow': '//div[@class="pagination-previous"]//a'
+            },
             {
                 'link': 'http://www.hg.org/legal_articles.asp',
                 'xpath': '//div[@class="article"]//a'
@@ -795,9 +820,14 @@ CATEGORIES = [
         'category': 'Finance',
         'data': [
             {
-                'link': 'http://www.financialexpress.com/',
-                'xpath': '//div[@class="latestheadlines"]//a',
-                'follow': '//div[@class="latestheadlines"]//b/a'
+                'link': 'http://www.financialexpress.com/section/personal-finance/626',
+                'xpath': '//div[@class="sectionlist"]/h5/a',
+                'follow': '//div[@class="sectionpagination"]//a'
+            },
+            {
+                'link': 'http://www.financialexpress.com/section/banking-finance/349',
+                'xpath': '//div[@class="sectionlist"]/h5/a',
+                'follow': '//div[@class="sectionpagination"]//a'
             },
             {
                 'link': 'http://www.economist.com/sections/business-finance',
@@ -879,16 +909,41 @@ CATEGORIES = [
                 'xpath': '//article//a[@itemprop="url"]',
                 'follow': '//nav[@class="pagination pagination-centered"]//a'
             },
-            {
-                'link': 'http://www.justjared.com/',
-                'xpath': '//div[@class="post"]//a[@rel="bookmark"]',
-                'follow': '//div[@class="wp-pagenavi"]//a'
-            }
         ]
     },
     {
         'category': 'Family & Community',
         'data': [
+            {
+                'link': 'http://www.theguardian.com/lifeandstyle/relationships',
+                'xpath': '//div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            # {
+            #     'link': 'http://www.theguardian.com/lifeandstyle/divorce',
+            #     'xpath': '//div[@class="linktext"]//a',
+            #     'follow': '//ul[@class="pagination b3"]//a'
+            # },
+            {
+                'link': 'http://www.theguardian.com/lifeandstyle/family',
+                'xpath': '//div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            {
+                'link': 'http://www.newser.com/tag/1887/1/marriage.html',
+                'xpath': '//div[@class="storyListContainer"]//a',
+                'follow': '//div[@class="tagPagePagingNav"]//a'
+            },
+            {
+                'link': 'http://nymag.com/tags/dating/',
+                'xpath': '//h2[@class="entry-title"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.theguardian.com/lifeandstyle/dating',
+                'xpath': '//div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
             {
                 'link': 'http://www.netfamilynews.org/',
                 'xpath': '//h2[@class="title"]//a',
@@ -899,26 +954,26 @@ CATEGORIES = [
                 'xpath': '//h2[@class="feature-headline"]//a',
                 'follow': '//div[@class="content-pages"]//a'
             },
-            {
-                'link': 'http://famvin.org/en/',
-                'xpath': '//h2[@class="title entry-title"]//a',
-                'follow': '//a[@class="page-numbers"]'
-            },
-            {
-                'link': 'http://spousebuzz.com/blog/category/spouse-family-news',
-                'xpath': '//h2[@class="entry-title"]//a',
-                'follow': '//div[@class="navigation"]//a'
-            },
-            {
-                'link': 'http://www.tv.com/shows/community/news/',
-                'xpath': '//h3[@class="title"]//a',
-                'follow': '//span[@class="pages"]//a'
-            },
-            {
-                'link': 'http://www.deseretnews.com/top/family',
-                'xpath': '//div[@class="headline-item"]//a',
-                'follow': '//div[@class="content-pages"]//a'
-            },
+            # {
+            #     'link': 'http://famvin.org/en/',
+            #     'xpath': '//h2[@class="title entry-title"]//a',
+            #     'follow': '//a[@class="page-numbers"]'
+            # },
+            # {
+            #     'link': 'http://spousebuzz.com/blog/category/spouse-family-news',
+            #     'xpath': '//h2[@class="entry-title"]//a',
+            #     'follow': '//div[@class="navigation"]//a'
+            # },
+            # {
+            #     'link': 'http://www.tv.com/shows/community/news/',
+            #     'xpath': '//h3[@class="title"]//a',
+            #     'follow': '//span[@class="pages"]//a'
+            # },
+            # {
+            #     'link': 'http://www.deseretnews.com/top/family',
+            #     'xpath': '//div[@class="headline-item"]//a',
+            #     'follow': '//div[@class="content-pages"]//a'
+            # },
             {
                 'link': 'http://www.mnn.com/family/family-activities',
                 'xpath': '//h2[@class="node-title"]//a',
@@ -978,14 +1033,19 @@ CATEGORIES = [
                 'follow': '//ul[@class="pages clearfix"]//a',
             },
             {
-                'link': 'http://www.bodyandsoul.com.au/fitness/training+tips/',
+                'link': 'http://www.bodyandsoul.com.au/fitness/running/',
                 'xpath': '//div[@class="story-block clearfix"]//a',
                 'follow': '//ul[@class="pages clearfix"]//a',
             },
             {
-                'link': 'http://www.breakingnews.ie/sport/',
-                'xpath': '//ul[@id="content"]//h3/a',
+                'link': 'http://www.bodyandsoul.com.au/fitness/training+tips/',
+                'xpath': '//div[@class="story-block clearfix"]//a',
+                'follow': '//ul[@class="pages clearfix"]//a',
             },
+            # {
+            #     'link': 'http://www.breakingnews.ie/sport/',
+            #     'xpath': '//ul[@id="content"]//h3/a',
+            # },
             {
                 'link': 'http://www.athensnews.com/ohio/articles.sec--40-1-sports-news.html',
                 'xpath': '//h1[@rel="title_traslate"]//a',
@@ -996,6 +1056,91 @@ CATEGORIES = [
     {
         'category': 'Home & Garden',
         'data': [
+            {
+                'link': 'http://freshome.com/furniture/',
+                'xpath': '//div[@class="entry header_post"]/h1/a',
+                'follow': '//a[@class="page-numbers"]'
+            },
+            {
+                'link': 'http://freshome.com/bedroom/',
+                'xpath': '//div[@class="entry header_post"]/h1/a',
+                'follow': '//a[@class="page-numbers"]'
+            },
+            {
+                'link': 'http://freshome.com/apartments/',
+                'xpath': '//div[@class="entry header_post"]/h1/a',
+                'follow': '//a[@class="page-numbers"]'
+            },
+            {
+                'link': 'http://freshome.com/best-of/',
+                'xpath': '//div[@class="entry header_post"]/h1/a',
+                'follow': '//a[@class="page-numbers"]'
+            },
+            {
+                'link': 'http://freshome.com/architecture/',
+                'xpath': '//div[@class="entry header_post"]/h1/a',
+                'follow': '//a[@class="page-numbers"]'
+            },
+            {
+                'link': 'http://freshome.com/kitchen/',
+                'xpath': '//div[@class="entry header_post"]/h1/a',
+                'follow': '//a[@class="page-numbers"]'
+            },
+            {
+                'link': 'http://freshome.com/living-room/',
+                'xpath': '//div[@class="entry header_post"]/h1/a',
+                'follow': '//a[@class="page-numbers"]'
+            },
+            {
+                'link': 'http://freshome.com/bathroom/',
+                'xpath': '//div[@class="entry header_post"]/h1/a',
+                'follow': '//a[@class="page-numbers"]'
+            },
+            {
+                'link': 'http://www.countryhomeideas.com.au/dream-homes',
+                'xpath': '//span[@class="field-content"]//a',
+                'follow': '//li[@class="pager-item"]//a'
+            },
+            {
+                'link': 'http://www.elledecor.com/archive/design-decorate/interiors/0/16',
+                'xpath': '//article[@class="g-12 g-last"]//h3/a',
+                'follow': '//nav[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.elledecor.com/archive/design-decorate/trends/0/16',
+                'xpath': '//article[@class="g-12 g-last"]//h3/a',
+                'follow': '//nav[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.elledecor.com/archive/design-decorate/ideas/0/16',
+                'xpath': '//article[@class="g-12 g-last"]//h3/a',
+                'follow': '//nav[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.countryliving.com/archive/homes/0/16',
+                'xpath': '//div[@class="header"]//a',
+                'follow': '//div[@id="next_img"]//a'
+            },
+            {
+                'link': 'http://www.homeanddecor.com.sg/blogs',
+                'xpath': '//span[@class="field-content"]/a',
+                'follow': '//ul[@class="pager"]//a'
+            },
+            {
+                'link': 'http://www.housebeautiful.com/archive/decorating/0/16/',
+                'xpath': '//a[@class="title"]',
+                'follow': '//a[@class="pagination_right"]'
+            },
+            {
+                'link': 'http://theinspiredroom.net/',
+                'xpath': '//h2[@class="entry-title"]//a',
+                'follow': '//div[@class="navigation"]//a'
+            },
+            {
+                'link': 'http://www.trendir.com/',
+                'xpath': '//div[@id="thumbsR-header"]/h2/a',
+                'follow': '//div[@class="content-nav"]//a'
+            },
             {
                 'link': 'http://www.bhg.com/',
                 'regex': r'/gardening|decorating|home-improvement/.+'
@@ -1118,6 +1263,31 @@ CATEGORIES = [
     {
         'category': 'Computers & Consumer Electronics',
         'data': [
+            {
+                'link': 'http://www.technewsworld.com/perl/section/internet/?init=22',
+                'xpath': '//div[@class="content-block"]//a[contains(@href, "/story/")]',
+                'follow': '//a[@class="section-next"]'
+            },
+            {
+                'link': 'http://uk.reuters.com/news/archive/technologyNews?view=page',
+                'xpath': '//div[@id="blogStyleNews"]//a[contains(@href, "article")]',
+                'follow': '//div[@class="pageNavigation"]//a'
+            },
+            {
+                'link': 'http://www.theguardian.com/technology/apps',
+                'xpath': '//div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            {
+                'link': 'http://www.theguardian.com/technology/games+tone/reviews',
+                'xpath': '//div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            {
+                'link': 'http://www.internetsociety.org/blog/tech-matters',
+                'xpath': '//span[@class="field-content"]//a',
+                'follow': '//li[@class="pager-next last"]//a'
+            },
             {
                 'link': 'http://www.computerworld.com/news',
                 'xpath': '//div[@class="post-cont"]//a',

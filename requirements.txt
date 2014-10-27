@@ -13,3 +13,4 @@ python-levenshtein
 requests
 simplejson
 selenium
+service_identity
