@@ -49,11 +49,6 @@ CATEGORIES = [
                 'xpath': '//tr[@class="questexcontenttr"]//a',
                 'follow': '//ul[@class="pager"]//a'
             },
-            # {
-            #     'link': 'http://nrn.com/taxonomy/term/44074/more',
-            #     'xpath': '//h3[@class="title"]//a',
-            #     'follow': '//ul[@class="pager"]/li/a'
-            # },
             {
                 'link': 'http://ny.eater.com/tags/nightlife',
                 'xpath': '//h1[@class="post-title"]//a',
@@ -125,11 +120,6 @@ CATEGORIES = [
                 'xpath': '//h2[@class="title"]//a',
                 'follow': '//div[@class="pagination_link more_articles alt_font"]//a'
             },
-            # {
-            #     'link': 'http://realestate.aol.com/blog/category/news/',
-            #     'xpath': '//a[@class="pull-left"]',
-            #     'follow': '//a[@rel="next"]'
-            # },
             {
                 'link': 'http://nypost.com/real-estate/',
                 'xpath': '//header[@class="entry-header"]//a',
@@ -161,11 +151,6 @@ CATEGORIES = [
                 'xpath': '//h3[@class="entry-title entry-summary"]//a',
                 'follow': '//span[@class="next"]//a'
             },
-            # {
-            #     'link': 'http://www.canadianrealestatemagazine.ca/news',
-            #     'xpath': '//h3[@class="catItemTitle"]//a',
-            #     'follow': '//div[@class="pagination"]//a'
-            # },
             {
                 'link': 'http://en.mercopress.com/real-estate',
                 'xpath': '//div[@class="item img"]//a',
@@ -176,8 +161,6 @@ CATEGORIES = [
                 'xpath': '//a[@class="artice-list"]',
                 'follow': '//a[@class="page-numbers"]'
             }
-
-
         ]
     },
     {
@@ -202,12 +185,6 @@ CATEGORIES = [
                 'xpath': '//h2[@class="postTitle"]//a',
                 'follow': '//div[@class="pageNavigationLinks"]//a'
             },
-            # {
-            #     'link': 'http://www.websearchguide.ca/internet-news/',
-            #     'xpath': '//h1[@class="entry-title"]//a',
-            #     'follow': '//div[@class="nav-previous"]//a'
-            # },
-
         ]
     },
     {
@@ -243,11 +220,6 @@ CATEGORIES = [
                 'xpath': '//div[@class="product"]//a',
                 'follow': '//li[@class="pagenav-item  pagenav-after"]//a'
             },
-            # {
-            #     'link': 'http://www.cafepress.com/+fox-news+gifts',
-            #     'xpath': '//div[@class="grid-title"]//a',
-            #     'follow': '//a[@rel="next"]'
-            # },
             {
                 'link': 'http://lifehacker.com/tag/gifts',
                 'xpath': '//h1[@class="headline h5 hover-highlight entry-title"]//a',
@@ -270,17 +242,12 @@ CATEGORIES = [
         'data': [
             {
                 'link': 'http://www.theguardian.com/education/teachertraining',
-                'xpath': '/div[@class="linktext"]//a',
+                'xpath': '//div[@class="linktext"]//a',
                 'follow': '//ul[@class="pagination b3"]//a'
             },
             {
                 'link': 'http://www.theguardian.com/education/schools',
-                'xpath': '/div[@class="linktext"]//a',
-                'follow': '//ul[@class="pagination b3"]//a'
-            },
-            {
-                'link': 'http://www.theguardian.com/education/',
-                'xpath': '/div[@class="linktext"]//a',
+                'xpath': '//div[@class="linktext"]//a',
                 'follow': '//ul[@class="pagination b3"]//a'
             },
             {
@@ -293,11 +260,6 @@ CATEGORIES = [
                 'xpath': '//a[@class="jobTitle-link"]',
                 'follow': '//ul[@class="pagination-links"]//a'
             },
-            # {
-            #     'link': 'http://jobs.bloomberg.com/go/Experienced-Jobs/515300/',
-            #     'xpath': '//a[@class="jobTitle-link"]',
-            #     'follow': '//ul[@class="pagination-links"]//a'
-            # },
             {
                 'link': 'http://jobs.theguardian.com/searchjobs/',
                 'xpath': '//ul[@class="jobsList"]//a',
@@ -364,37 +326,16 @@ CATEGORIES = [
                 'xpath': '//div[@class="stream-story image"]//a',
                 'follow': '//div[@class="stream-jump"]//a'
             },
-            # {
-            #     'link': 'http://www.businesstravelnews.com/Business-Travel-Stories/',
-            #     'xpath': '//div[@class="item-title"]//a',
-            #     'follow': '//div[@class="pagination right"]//a'
-            # },
-            # {
-            #     'link': 'http://www.pattayamail.com/travel',
-            #     'xpath': '//h3[@class="catItemTitle"]//a',
-            #     'follow': '//span[@class="pagination"]//a'
-
-            # },
             {
                 'link': 'http://www.dailynewsegypt.com/category/touriism/',
                 'xpath': '//h2[@class="posttitle"]//a',
                 'follow': '//div[@id="nextpage"]//a'
             },
-            # {
-            #     'link': 'http://www.tourism-review.com/top-weekly-travel-news/1',
-            #     'xpath': '//div[@class="block_big_top"]//a',
-            #     'follow': '//div[@class="pagination"]//a'
-            # }
         ]
     },
     {
         'category': 'Beauty & Personal Care',
         'data': [
-            # {
-            #     'link': 'http://www.mintel.com/category/press-centre/beauty-and-personal-care',
-            #     'xpath': '//div[@class="post-title-press"]/h2/a',
-            #     'follow': '//div[@class="pagination"]/a'
-            # },
             {
                 'link': 'http://www.dailymail.co.uk/femail/beauty/index.html',
                 'regex': 'beauty',
@@ -420,11 +361,6 @@ CATEGORIES = [
                 'xpath': '//div[@class="post-info"]//a',
                 'follow': '//div[@class="news-pager"]//a'
             },
-            # {
-            #     'link': 'http://www.euromonitor.com/beauty-and-personal-care',
-            #     'xpath': '//div[@class="articleListStandard"]//a',
-            #     'follow': '//div[@class="pages"]//a'
-            # },
             {
                 'link': 'http://www.newsforshoppers.com/section/home/personal-care/',
                 'xpath': '//div[@class="recent-item"]//a',
@@ -649,11 +585,6 @@ CATEGORIES = [
                 'xpath': '//div[@class="text"]//a[contains(@href, "food-and-drink")]',
                 'follow': '/div[@class="pagination"]//a'
             },
-            # {
-            #     'link': 'http://www.foodsafetynews.com/',
-            #     'xpath': '//h2[@class="post-title"]//a',
-            #     'follow': '//li[@class="pagination-old"]//a'
-            # },
             {
                 'link': 'http://www.specialtyfood.com/news-trends/publications/specialty-food-news/',
                 'xpath': '//h2[@class="headlines left"]//a',
@@ -679,11 +610,6 @@ CATEGORIES = [
                 'xpath': '//h3[@class="blogroll_title"]//a',
                 'follow': '//div[@class="wp-pagenavi"]//a'
             },
-            # {
-            #     'link': 'http://www.foodincanada.com/news/',
-            #     'xpath': '//a[@rel="bookmark"]',
-            #     'follow': '//ul[@class="pagination"]//a'
-            # }
         ]
     },
     {
@@ -714,11 +640,6 @@ CATEGORIES = [
                 'xpath': '//h3[@class="heading"]//a',
                 'follow': '//div[@class="pagination"]//a'
             },
-            # {
-            #     'link': 'http://commonthread.alternativeapparel.com/',
-            #     'xpath': '//h2[@class="entry-title"]//a',
-            #     'follow': '//a[@class="page-numbers"]'
-            # },
             {
                 'link': 'http://www.fibre2fashion.com/news/apparel-news/',
                 'xpath': '//a[@class="Indexnewstitle"]',
@@ -729,16 +650,6 @@ CATEGORIES = [
                 'xpath': '//span[@class="articlenamelinks"]//a',
                 'follow': '//div[@class="PagerControl"]//a'
             },
-            # {
-            #     'link': 'http://jezebel.com/tag/american-apparel',
-            #     'xpath': '//h1[@class="headline h5 hover-highlight entry-title"]//a',
-            #     'follow': '//div[@class="text-center mbx"]//a'
-            # },
-            # {
-            #     'link': 'http://www.elle.com/runway/',
-            #     'xpath': '//h2[@class="title"]//a',
-            #     'follow': '//a[@rel="archives"]'
-            # },
             {
                 'link': 'http://www.graziadaily.co.uk/fashion/tips',
                 'xpath': '//div[@class="desc"]//a',
@@ -864,11 +775,6 @@ CATEGORIES = [
                 'xpath': '//h3[@class="item-title"]//a[contains(@href, "personal-finance")]',
                 'follow': '//li[@class="pager-item"]//a'
             },
-            # {
-            #     'link': 'http://www.financeasia.com/Category/735,banks.aspx',
-            #     'xpath': '//div[@class="article-title"]//a',
-            #     'follow': '//div[@class="paging"]//a'
-            # },
         ]
     },
     {
@@ -919,11 +825,6 @@ CATEGORIES = [
                 'xpath': '//div[@class="linktext"]//a',
                 'follow': '//ul[@class="pagination b3"]//a'
             },
-            # {
-            #     'link': 'http://www.theguardian.com/lifeandstyle/divorce',
-            #     'xpath': '//div[@class="linktext"]//a',
-            #     'follow': '//ul[@class="pagination b3"]//a'
-            # },
             {
                 'link': 'http://www.theguardian.com/lifeandstyle/family',
                 'xpath': '//div[@class="linktext"]//a',
@@ -954,26 +855,6 @@ CATEGORIES = [
                 'xpath': '//h2[@class="feature-headline"]//a',
                 'follow': '//div[@class="content-pages"]//a'
             },
-            # {
-            #     'link': 'http://famvin.org/en/',
-            #     'xpath': '//h2[@class="title entry-title"]//a',
-            #     'follow': '//a[@class="page-numbers"]'
-            # },
-            # {
-            #     'link': 'http://spousebuzz.com/blog/category/spouse-family-news',
-            #     'xpath': '//h2[@class="entry-title"]//a',
-            #     'follow': '//div[@class="navigation"]//a'
-            # },
-            # {
-            #     'link': 'http://www.tv.com/shows/community/news/',
-            #     'xpath': '//h3[@class="title"]//a',
-            #     'follow': '//span[@class="pages"]//a'
-            # },
-            # {
-            #     'link': 'http://www.deseretnews.com/top/family',
-            #     'xpath': '//div[@class="headline-item"]//a',
-            #     'follow': '//div[@class="content-pages"]//a'
-            # },
             {
                 'link': 'http://www.mnn.com/family/family-activities',
                 'xpath': '//h2[@class="node-title"]//a',
@@ -1042,10 +923,6 @@ CATEGORIES = [
                 'xpath': '//div[@class="story-block clearfix"]//a',
                 'follow': '//ul[@class="pages clearfix"]//a',
             },
-            # {
-            #     'link': 'http://www.breakingnews.ie/sport/',
-            #     'xpath': '//ul[@id="content"]//h3/a',
-            # },
             {
                 'link': 'http://www.athensnews.com/ohio/articles.sec--40-1-sports-news.html',
                 'xpath': '//h1[@rel="title_traslate"]//a',
@@ -1203,11 +1080,6 @@ CATEGORIES = [
                 'xpath': '//div[@class="title"]//a',
                 'follow': '//li[@class="pager-item"]//a'
             },
-            # {
-            #     'link': 'http://www.homeandgardenblog.com/',
-            #     'xpath': '//h3[@class="post-title entry-title"]//a',
-            #     'follow': '//a[@class="blog-pager-older-link"]'
-            # },
             {
                 'link': 'http://www.lifestyle.com.au/garden-ideas/',
                 'xpath': '//h2[@class="TitleText"]//a',
@@ -1233,10 +1105,6 @@ CATEGORIES = [
                 'xpath': '//a[@class="quick-reads-title"]',
                 'follow': '//a[@class="rd-red-buttons"]'
             },
-            # {
-            #     'link': 'http://realestate.msn.com/HomeAndGarden/index.aspx',
-            #     'xpath': '//ul[@class="linklist3"]//a'
-            # },
             {
                 'link': 'http://www.housetohome.co.uk/articles/greenliving.html',
                 'xpath': '//ul[@class="article_container "]//a',
@@ -1247,17 +1115,6 @@ CATEGORIES = [
                 'xpath': '//div[@class="content"]//a[contains(@href, "/news/")]',
                 'follow': '//a[@rel="next"]'
             },
-            # {
-            #     'link': 'http://www.cambridge-news.co.uk/homes-and-gardens',
-            #     'xpath': '//h3[@class="heading heading--l"]//a',
-            #     'follow': '//div[@class="pagination-wrapper"]//a'
-            # },
-            # {
-            #     'link': 'http://www.sacbee.com/home_garden/v-all_stories/index.html',
-            #     'xpath': '//div[@class="story clearfix autohighlights"]//div[@class="title"]//a',
-            #     'follow': '//div[@class="spill_navigation pagination"]//a'
-            # }
-
         ]
     },
     {
@@ -1404,7 +1261,6 @@ CATEGORIES = [
                 'xpath': '//div[@class="txt-box"]//a[contains(@href, "business")]',
                 'follow': '//div[@class="archive-pagination"]//a'
             }
-
         ]
     },
 ]
