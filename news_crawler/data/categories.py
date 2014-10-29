@@ -331,6 +331,26 @@ CATEGORIES = [
                 'xpath': '//h2[@class="posttitle"]//a',
                 'follow': '//div[@id="nextpage"]//a'
             },
+            {
+                'link': 'http://www.bbc.com/travel',
+                'xpath': '//div[@class="entry"]/h2/a',
+                'follow': '//div[@id="paginationControl"]//a'
+            },
+            {
+                'link': 'http://www.lonelyplanet.com/news',
+                'xpath': '//div[@class="post-content-wrapper"]//h2/a',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://www.travelandleisure.com/ideas/adventure/articles',
+                'xpath': '//div[@id="archive-results"]//ul//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.independent.co.uk/travel/news-and-advice/',
+                'xpath': '//div[@class="article news"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            }
         ]
     },
     {
@@ -516,6 +536,11 @@ CATEGORIES = [
                 'link': 'http://www.carwale.com/news/',
                 'xpath': '//a[@class="news-title"]',
                 'follow': '//div[@id="divStrip"]//a'
+            },
+            {
+                'link': 'http://autos.aol.com/article/',
+                'xpath': '//h2[@class="post-head"]//a',
+                'follow': '//a[@class="nxtPost"]'
             }
         ]
     },
