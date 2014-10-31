@@ -28,7 +28,7 @@ class NewsSpider(Spider):
         'CLOSESPIDER_ITEMCOUNT': MAX_ITEMS,
         'CONCURRENT_REQUESTS': 200,
         'CONCURRENT_REQUESTS_PER_DOMAIN': 4,
-        'DOWNLOAD_TIMEOUT': 30,
+        'DOWNLOAD_TIMEOUT': 60,
         'COOKIES_ENABLED': False,
         'RETRY_ENABLED': False,
         'REDIRECT_ENABLED': True,
