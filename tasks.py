@@ -15,6 +15,7 @@ import os
 import time
 import hashlib
 import api
+import random
 
 
 def master_run():
@@ -22,7 +23,7 @@ def master_run():
 
     for cat in categories:
         count = db.links.find({'category': cat['category']}).count()
-        if count < MAX_ITEMS:
+        if count < 10000:
             news_spider(cat['category'])
 
 
@@ -91,8 +92,10 @@ def build_data():
                 print "Cannot get topic id: ", cat['category']
                 continue
             data = db.links.find(
-                {'category': cat['category'], 'body': {'$exists': True}}).limit(quantity)
+                {'category': cat['category'], 'body': {'$exists': True}})#.limit(quantity)
             data = list(data)
+            random.shuffle(data)
+            data = data[:quantity]
             # if len(data) < int(ratio*quantity):
             #     print 'DROPPED', cat['category'], len(data)
             #     continue
@@ -162,8 +165,6 @@ def review():
 if __name__ == '__main__':
     # push_seen_data_to_redis()
 
-    # news_spider('Travel & Tourism')
-    # news_spider('Jobs & Education')
     # news_spider('Home & Garden')
     # master_run()
     count_data()
