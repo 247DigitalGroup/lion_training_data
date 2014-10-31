@@ -40,6 +40,16 @@ CATEGORIES = [
         'category': 'Dining & Nightlife',
         'data': [
             {
+                'link': 'http://www.theguardian.com/lifeandstyle/restaurants',
+                'xpath': '//div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            {
+                'link': 'http://www.santacruz.com/category/restaurants/',
+                'xpath': '//h2[@class="title"]//a',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
                 'link': 'http://www.elitetraveler.com/category/finest-dining/dining-news/',
                 'xpath': '//h2[@class="entry-title"]//a',
                 'follow': '//div[@class="nav-previous"]/a',
@@ -74,6 +84,16 @@ CATEGORIES = [
                 'xpath': '//div[@class="posthead"]//a',
                 'follow': '//div[@id="nextprevious"]//a'
             },
+            {
+                'link': 'http://www.theguardian.com/lifeandstyle/restaurants+tone/reviews',
+                'xpath': '//div[@class="linktext"]//h3/a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            {
+                'link': 'http://www.houstonpress.com/restaurants/reviews/',
+                'xpath': '//a[@class="headline"]',
+                'follow': '//span[@class="Pagination"]//a'
+            }
         ]
     },
     # {
@@ -167,6 +187,16 @@ CATEGORIES = [
         'category': 'Telecom',
         'data': [
             {
+                'link': 'http://www.telecomreseller.com/',
+                'xpath': '//div[@class="posttitle"]//h2/a',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://gadgets.ndtv.com/telecom/news',
+                'xpath': '//div[@class="caption"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
                 'link': 'http://www.budde.com.au/Research/Latest.aspx',
                 'xpath': '//ul[@class="ResultList"]//a',
             },
@@ -190,6 +220,26 @@ CATEGORIES = [
     {
         'category': 'Occasions & Gifts',
         'data': [
+            {
+                'link': 'http://www.weddingideasmag.com/category/wedding-news/',
+                'xpath': '//h2[@class="title"]//a',
+                'follow': '//div[@class="nav-entries"]//a'
+            },
+            {
+                'link': 'http://blog.theknot.com/',
+                'xpath': '//h2[@class="a-flip"]//a',
+                'follow': '//div[@class="pagination-navigation"]//a'
+            },
+            {
+                'link': 'http://www.brides.com/blogs/aisle-say/celebrity-weddings/',
+                'xpath': '//div[@class="hentry entry"]//a',
+                'follow': '//li[@class="prevBlogLink"]//a'
+            },
+            {
+                'link': 'http://www.ewedding.com/blog/',
+                'xpath': '//h2[@class="entry-title"]//a',
+                'follow': '//div[@class="nav-previous"]//a'
+            },
             {
                 'link': 'http://www.mirror.co.uk/all-about/funerals',
                 'xpath': '//div[@class="teaser-info"]//h2/a',
@@ -224,11 +274,6 @@ CATEGORIES = [
                 'link': 'http://lifehacker.com/tag/gifts',
                 'xpath': '//h1[@class="headline h5 hover-highlight entry-title"]//a',
                 'follow': '//div[@class="text-center mbx"]//a'
-            },
-            {
-                'link': 'http://www.buzzfeed.com/tag/gifts',
-                'xpath': '//h2[@id="test"]//a',
-                'follow': '//ul[@class="paging"]//a'
             },
             {
                 'link': 'https://blog.etsy.com/en/?ref=ftr',
@@ -280,6 +325,16 @@ CATEGORIES = [
     {
         'category': 'Travel & Tourism',
         'data': [
+            {
+                'link': 'http://www.philstar.com/lifestyle/archive/travel-and-tourism',
+                'xpath': '//span[@class="article-title"]//a',
+                'follow': '//ul[@class="pager"]//a'
+            },
+            {
+                'link': 'http://www.financialexpress.com/section/Travel-Tourism/385/1',
+                'xpath': '//div[@class="sectionlist"]//a',
+                'follow': '//div[@class="sectionpagination"]//a'
+            },
             {
                 'link': 'http://www.tripadvisor.com/Inspiration-g1-c7-World.html',
                 'xpath': '//dl[@class="inspResults"]//a',
@@ -356,6 +411,36 @@ CATEGORIES = [
     {
         'category': 'Beauty & Personal Care',
         'data': [
+            {
+                'link': 'http://www.beautynewsnyc.com/category/skin-care/',
+                'xpath': '//div[@class="sectional_title"]//a',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://www.totalbeauty.com/how-tos/nails',
+                'xpath': '//div[@class="headingdiv"]//p/a',
+                'follow': '//div[@id="pagination_container"]//a'
+            },
+            {
+                'link': 'http://www.totalbeauty.com/how-tos/hairstyles',
+                'xpath': '//div[@class="headingdiv"]//p/a',
+                'follow': '//div[@id="pagination_container"]//a'
+            },
+            {
+                'link': 'http://www.totalbeauty.com/how-tos/make-up',
+                'xpath': '//div[@class="headingdiv"]//p/a',
+                'follow': '//div[@id="pagination_container"]//a'
+            },
+            {
+                'link': 'http://www.totalbeauty.com/how-tos/hair-care',
+                'xpath': '//div[@class="headingdiv"]//p/a',
+                'follow': '//div[@id="pagination_container"]//a'
+            },
+            {
+                'link': 'http://www.independent.co.uk/topic/Skincare',
+                'xpath': '//div[@class="article news"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
             {
                 'link': 'http://www.dailymail.co.uk/femail/beauty/index.html',
                 'regex': 'beauty',
@@ -497,6 +582,11 @@ CATEGORIES = [
     {
         'category': 'Vehicles',
         'data': [
+            {
+                'link': 'http://www.gizmag.com/automotive/',
+                'xpath': '//div[@class="clear_both"]//h2/a',
+                'follow': '//div[@id="pagination"]//a'
+            },
             {
                 'link': 'http://www.cycleworld.com/category/news/',
                 'xpath': '//h2[@class="entry-title"]//a',
@@ -640,6 +730,61 @@ CATEGORIES = [
     {
         'category': 'Apparel',
         'data': [
+            {
+                'link': 'http://www.fashionisers.com/category/fashion-news/',
+                'xpath': '//a[@class="main-headline"]',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.examiner.com/fashion-trends/articles?page=1',
+                'xpath': '//div[@class="media__body"]//a',
+                'follow': '//ul[@class="pager"]//a'
+            },
+            {
+                'link': 'http://www.thetrendspotter.net/category/womens-fashion-tends',
+                'xpath': '//h2[@class="entry-title"]//a',
+                'follow': '//div[@class="navigation"]//a'
+            },
+            {
+                'link': 'http://www.collegefashion.net/',
+                'xpath': '//div[@class="entry"]//h2/a',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://www.fashionbeans.com/category/mens-fashion-trends/',
+                'xpath': '//div[@class="catArticles"]/a',
+                'follow': '//div[@class="pageNumbers left"]//a'
+            },
+            {
+                'link': 'http://www.thefashionspot.com/style-trends/',
+                'xpath': '//a[@class="post-title"]',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://www.thefashionspot.com/tag/fashion-trend/',
+                'xpath': '//a[@class="post-title"]',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://www.gentlemansgazette.com/category/wardrobe/clothing/',
+                'xpath': '//h2[@class="post-title entry-title"]//a',
+                'follow': '//nav[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.jckonline.com/jewelry-news',
+                'xpath': '//span[@class="field-content"]//a',
+                'follow': '//ul[@class="links pager views-mini-pager"]//a'
+            },
+            {
+                'link': 'http://inventorspot.com/apparel_and_accessories',
+                'xpath': '//h2[@class="title"]//a',
+                'follow': '//div[@class="pager"]//a'
+            },
+            {
+                'link': 'http://jewelrynewsnetwork.blogspot.com/',
+                'xpath': '//h3[@class="post-title entry-title"]//a',
+                'follow': '//span[@id="blog-pager-older-link"]//a'
+            },
             {
                 'link': 'http://gulfnews.com/life-style/beauty-fashion',
                 'xpath': '//ul[@class="overview noborder"]//a',
@@ -959,6 +1104,11 @@ CATEGORIES = [
         'category': 'Home & Garden',
         'data': [
             {
+                'link': 'http://www.home-designing.com/category/furniture-designs',
+                'xpath': '//div[@class="heading"]//h2/a',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
                 'link': 'http://freshome.com/furniture/',
                 'xpath': '//div[@class="entry header_post"]/h1/a',
                 'follow': '//a[@class="page-numbers"]'
@@ -1015,6 +1165,26 @@ CATEGORIES = [
             },
             {
                 'link': 'http://www.elledecor.com/archive/design-decorate/ideas/0/16',
+                'xpath': '//article[@class="g-12 g-last"]//h3/a',
+                'follow': '//nav[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.elledecor.com/archive/design-decorate/color/0/16',
+                'xpath': '//article[@class="g-12 g-last"]//h3/a',
+                'follow': '//nav[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.elledecor.com/archive/shopping/furniture/0/16',
+                'xpath': '//article[@class="g-12 g-last"]//h3/a',
+                'follow': '//nav[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.elledecor.com/archive/shopping/accessories/0/16',
+                'xpath': '//article[@class="g-12 g-last"]//h3/a',
+                'follow': '//nav[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.elledecor.com/archive/home-remodeling/design-solutions/0/16',
                 'xpath': '//article[@class="g-12 g-last"]//h3/a',
                 'follow': '//nav[@class="pagination"]//a'
             },
@@ -1140,10 +1310,226 @@ CATEGORIES = [
                 'xpath': '//div[@class="content"]//a[contains(@href, "/news/")]',
                 'follow': '//a[@rel="next"]'
             },
+            {
+                'link': 'http://dornob.com/design/interiors/',
+                'xpath': '//div[@class="post-title"]/..',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://dornob.com/design/furniture/',
+                'xpath': '//div[@class="post-title"]/..',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://dornob.com/design/fixtures/',
+                'xpath': '//div[@class="post-title"]/..',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://dornob.com/design/furnishings/',
+                'xpath': '//div[@class="post-title"]/..',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://dornob.com/design/more/',
+                'xpath': '//div[@class="post-title"]/..',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://dornob.com/design/architecture/',
+                'xpath': '//div[@class="post-title"]/..',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/home-improvement/furniture-fixtures/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/home-improvement/home-security/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/home-improvement/home-accessories/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/home-improvement/paints/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/home-improvement/flooring/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/home-improvement/lighting/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/home-improvement/walls/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/home-improvement/fabric-linen/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/home-improvement/fabric-linen/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/kitchen-decor/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/bath-fittings-sanitaryware/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/do-it-yourself/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/ideas-for-you/festive-season-ideas/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/ideas-for-you/themes-trends/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://decor.magicbricks.com/ideas-for-you/space-management/',
+                'xpath': '//div[@class="readMoreBox"]//a',
+                'follow': '//div[@class="pagination cf"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/decorating/kitchen/?p=1',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/decorating/bathroom/',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/decorating/bedroom/',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/decorating/storage/',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/decorating/living+dining/',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/decorating/outdoor/',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/decorating/trends/',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/homes/country+homes',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/homes/beach+houses',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/homes/international+homes',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/homes/colourful+homes',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/homes/modern+homes',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/gardening/features',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/gardening/features',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/gardening/how+to+grow',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/gardening/plant+guides',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.homelife.com.au/gardening/beautiful+gardens',
+                'xpath': '//div[@class="story-block"]//a',
+                'follow': '//ul[@class="pages"]//a'
+            },
+            {
+                'link': 'http://www.lifestyle.com.au/landscaping/',
+                'xpath': '//h2[contains(@class, "TitleText")]//a',
+                'follow': '//div[@class="Pagination"]//a'
+            },
+            {
+                'link': 'http://www.lifestyle.com.au/garden-ideas/',
+                'xpath': '//h2[contains(@class, "TitleText")]//a',
+                'follow': '//div[@class="Pagination"]//a'
+            },
+            {
+                'link': 'http://www.lifestyle.com.au/outdoor-living/',
+                'xpath': '//h2[contains(@class, "TitleText")]//a',
+                'follow': '//div[@class="Pagination"]//a'
+            },
+            {
+                'link': 'http://www.lifestyle.com.au/home-decorating/',
+                'xpath': '//h2[contains(@class, "TitleText")]//a',
+                'follow': '//div[@class="Pagination"]//a'
+            },
+            {
+                'link': 'http://www.lifestyle.com.au/home-cleaning/',
+                'xpath': '//h2[contains(@class, "TitleText")]//a',
+                'follow': '//div[@class="Pagination"]//a'
+            }
+
         ]
     },
     {
-        'category': 'Computers & Consumer Electronics',
+        'category': 'Digital Technology',
         'data': [
             {
                 'link': 'http://www.technewsworld.com/perl/section/internet/?init=22',
