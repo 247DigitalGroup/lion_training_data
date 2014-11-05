@@ -187,11 +187,6 @@ CATEGORIES = [
         'category': 'Telecom',
         'data': [
             {
-                'link': 'http://www.telecomreseller.com/',
-                'xpath': '//div[@class="posttitle"]//h2/a',
-                'follow': '//div[@class="wp-pagenavi"]//a'
-            },
-            {
                 'link': 'http://gadgets.ndtv.com/telecom/news',
                 'xpath': '//div[@class="caption"]//a',
                 'follow': '//div[@class="pagination"]//a'
@@ -224,11 +219,6 @@ CATEGORIES = [
                 'link': 'http://www.weddingideasmag.com/category/wedding-news/',
                 'xpath': '//h2[@class="title"]//a',
                 'follow': '//div[@class="nav-entries"]//a'
-            },
-            {
-                'link': 'http://blog.theknot.com/',
-                'xpath': '//h2[@class="a-flip"]//a',
-                'follow': '//div[@class="pagination-navigation"]//a'
             },
             {
                 'link': 'http://www.brides.com/blogs/aisle-say/celebrity-weddings/',
@@ -497,11 +487,6 @@ CATEGORIES = [
                 'follow': '//div[@id="page_num"]//a'
             },
             {
-                'link': 'http://www.beautyworldnews.com/accessories/',
-                'xpath': '//dd[@class="tit"]//a',
-                'follow': '//div[@id="page_num"]//a'
-            },
-            {
                 'link': 'http://www.vogue.com.au/beauty/trends/',
                 'xpath': '//h3[@class="heading"]//a',
                 'follow': '//div[@class="pagination"]//a'
@@ -731,6 +716,31 @@ CATEGORIES = [
         'category': 'Apparel',
         'data': [
             {
+                'link': 'http://www.thefashionspot.com/style-trends/',
+                'xpath': '//a[@class="post-title"]',
+                'follow': '//div[@class="wp-pagenavi"]//a'
+            },
+            {
+                'link': 'http://www.theguardian.com/fashion/mens-fashion',
+                'xpath': '//div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            {
+                'link': 'http://www.fashionisers.com/category/fashion-news/',
+                'xpath': '//div[@class="category3-text"]//a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.latina.com/taxonomy/term/4/latest',
+                'xpath': '//div[@class="taxonomy-content"]//a',
+                'follow': '//div[@class="pagination pagination-centered"]//a'
+            },
+            {
+                'link': 'http://beauty.bgfashion.net/fashion-trends/34',
+                'xpath': '//div[@class="Mblock_Large"]//a',
+                'follow': '//p[@align="center"]//a',
+            },
+            {
                 'link': 'http://www.fashionisers.com/category/fashion-news/',
                 'xpath': '//a[@class="main-headline"]',
                 'follow': '//div[@class="pagination"]//a'
@@ -771,7 +781,17 @@ CATEGORIES = [
                 'follow': '//nav[@class="pagination"]//a'
             },
             {
-                'link': 'http://www.jckonline.com/jewelry-news',
+                'link': 'http://www.jckonline.com/metal-news',
+                'xpath': '//span[@class="field-content"]//a',
+                'follow': '//ul[@class="links pager views-mini-pager"]//a'
+            },
+            {
+                'link': 'http://www.jckonline.com/colored-stones',
+                'xpath': '//span[@class="field-content"]//a',
+                'follow': '//ul[@class="links pager views-mini-pager"]//a'
+            },
+            {
+                'link': 'http://www.jckonline.com/pearl-news',
                 'xpath': '//span[@class="field-content"]//a',
                 'follow': '//ul[@class="links pager views-mini-pager"]//a'
             },
@@ -784,11 +804,6 @@ CATEGORIES = [
                 'link': 'http://jewelrynewsnetwork.blogspot.com/',
                 'xpath': '//h3[@class="post-title entry-title"]//a',
                 'follow': '//span[@id="blog-pager-older-link"]//a'
-            },
-            {
-                'link': 'http://gulfnews.com/life-style/beauty-fashion',
-                'xpath': '//ul[@class="overview noborder"]//a',
-                'follow': '//ul[@class="pagination"]//a'
             },
             {
                 'link': 'http://www.vogue.com.au/fashion/trends/',
@@ -809,16 +824,6 @@ CATEGORIES = [
                 'link': 'http://www.vogue.com.au/fashion/accessories/',
                 'xpath': '//h3[@class="heading"]//a',
                 'follow': '//div[@class="pagination"]//a'
-            },
-            {
-                'link': 'http://www.fibre2fashion.com/news/apparel-news/',
-                'xpath': '//a[@class="Indexnewstitle"]',
-                'follow': '//table[@id="pagingHolder"]//a'
-            },
-            {
-                'link': 'http://apparel.edgl.com/news/all',
-                'xpath': '//span[@class="articlenamelinks"]//a',
-                'follow': '//div[@class="PagerControl"]//a'
             },
             {
                 'link': 'http://www.graziadaily.co.uk/fashion/tips',
@@ -894,6 +899,21 @@ CATEGORIES = [
                 'link': 'http://www.nowmagazine.co.uk/articles/list/lp/fashion-news',
                 'xpath': '//h3[@class="headline"]//a',
                 'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.independent.co.uk/life-style/fashion/features/',
+                'xpath': '//div[@class="text"]/h3/a',
+                'follow': '//div[@class="pagination"]//a'
+            },
+            {
+                'link': 'http://www.marieclaire.com/archives/fashion/trends/24;1',
+                'xpath': '//ul[@class="archive_list"]//a',
+                'follow': '//div[@class="pages long"]//a'
+            },
+            {
+                'link': 'http://www.marieclaire.com/archives/fashion/tips/24;1',
+                'xpath': '//ul[@class="archive_list"]//a',
+                'follow': '//div[@class="pages long"]//a'
             }
         ]
     },
@@ -1014,16 +1034,6 @@ CATEGORIES = [
                 'link': 'http://www.theguardian.com/lifeandstyle/dating',
                 'xpath': '//div[@class="linktext"]//a',
                 'follow': '//ul[@class="pagination b3"]//a'
-            },
-            {
-                'link': 'http://www.netfamilynews.org/',
-                'xpath': '//h2[@class="title"]//a',
-                'follow': '//div[@class="alignleft"]/a'
-            },
-            {
-                'link': 'http://www.deseretnews.com/family',
-                'xpath': '//h2[@class="feature-headline"]//a',
-                'follow': '//div[@class="content-pages"]//a'
             },
             {
                 'link': 'http://www.mnn.com/family/family-activities',
@@ -1236,6 +1246,11 @@ CATEGORIES = [
                 'follow': '//ul[@class="pagination b3"]//a'
             },
             {
+                'link': 'http://www.theguardian.com/lifeandstyle/homes',
+                'xpath': '//div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            {
                 'link': 'http://gardeningnewstoday.com/',
                 'xpath': '//h2[@class="entry-title"]//a',
                 'follow': '//div[@class="pagination"]//a'
@@ -1259,11 +1274,6 @@ CATEGORIES = [
                 'link': 'http://timesofindia.indiatimes.com/life-style/home-garden',
                 'xpath': '//div[@class="ct1stry"]//a',
                 'follow': '//div[@class="pagenumber1"]//a'
-            },
-            {
-                'link': 'http://www.euromonitor.com/home-and-garden',
-                'xpath': '//div[@class="articleListStandard"]//a',
-                'follow': '//div[@class="pages"]//a'
             },
             {
                 'link': 'http://freshome.com/best-of/',
@@ -1532,7 +1542,32 @@ CATEGORIES = [
         'category': 'Digital Technology',
         'data': [
             {
-                'link': 'http://www.technewsworld.com/perl/section/internet/?init=22',
+                'link': 'http://www.technewsworld.com/perl/section/internet/',
+                'xpath': '//div[@class="content-block"]//a[contains(@href, "/story/")]',
+                'follow': '//a[@class="section-next"]'
+            },
+            {
+                'link': 'http://www.technewsworld.com/perl/section/computing/',
+                'xpath': '//div[@class="content-block"]//a[contains(@href, "/story/")]',
+                'follow': '//a[@class="section-next"]'
+            },
+            {
+                'link': 'http://www.technewsworld.com/perl/section/IT/',
+                'xpath': '//div[@class="content-block"]//a[contains(@href, "/story/")]',
+                'follow': '//a[@class="section-next"]'
+            },
+            {
+                'link': 'http://www.technewsworld.com/perl/section/mobile-tech/',
+                'xpath': '//div[@class="content-block"]//a[contains(@href, "/story/")]',
+                'follow': '//a[@class="section-next"]'
+            },
+            {
+                'link': 'http://www.technewsworld.com/perl/section/tech-security/',
+                'xpath': '//div[@class="content-block"]//a[contains(@href, "/story/")]',
+                'follow': '//a[@class="section-next"]'
+            },
+            {
+                'link': 'http://www.technewsworld.com/perl/section/technology/',
                 'xpath': '//div[@class="content-block"]//a[contains(@href, "/story/")]',
                 'follow': '//a[@class="section-next"]'
             },
@@ -1547,7 +1582,12 @@ CATEGORIES = [
                 'follow': '//ul[@class="pagination b3"]//a'
             },
             {
-                'link': 'http://www.theguardian.com/technology/games+tone/reviews',
+                'link': 'http://www.theguardian.com/technology/internet',
+                'xpath': '//div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            {
+                'link': 'http://www.theguardian.com/technology/mobilephones',
                 'xpath': '//div[@class="linktext"]//a',
                 'follow': '//ul[@class="pagination b3"]//a'
             },
@@ -1625,6 +1665,11 @@ CATEGORIES = [
         'category': 'Business & Industrial',
         'data': [
             {
+                'link': 'http://www.theguardian.com/business/economics',
+                'xpath': '//div[@class="linktext"]//a',
+                'follow': '//ul[@class="pagination b3"]//a'
+            },
+            {
                 'link': 'http://www.huffingtonpost.com/business/',
                 'regex': r'.html?utm_hp_ref=business',
             },
@@ -1649,11 +1694,6 @@ CATEGORIES = [
                 'follow': '//li[@class="pager-next last"]//a'
             },
             {
-                'link': 'http://www.techspot.com/category/industry/',
-                'xpath': '//div[@class="article-content  "]//a',
-                'follow': '//div[@class="footerPagelist comments-pager"]//a'
-            },
-            {
                 'link': 'http://www.eventindustrynews.co.uk/category/brand-marketing/',
                 'xpath': '//h2[@class="post-title"]//a',
                 'follow': '//a[@class="page-numbers"]'
@@ -1662,11 +1702,11 @@ CATEGORIES = [
                 'link': 'http://www.euronews.com/business/',
                 'xpath': '//ul[@class="subcategoryList clear"]//a',
             },
-            {
-                'link': 'http://www.ibtimes.co.uk/business',
-                'xpath': '//div[@class="section-head"]//a',
-                'follow': '//div[@class="more-news"]//a'
-            },
+            # {
+            #     'link': 'http://www.ibtimes.co.uk/business',
+            #     'xpath': '//div[@class="section-head"]//a',
+            #     'follow': '//div[@class="more-news"]//a'
+            # },
             {
                 'link': 'http://www.channelnewsasia.com/archives/business',
                 'xpath': '//div[@class="txt-box"]//a[contains(@href, "business")]',
